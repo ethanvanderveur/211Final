@@ -9,14 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    private bool isGrounded;
+    public bool isGrounded;
 
     public float speed = 6f;
     public int gravMode = 0; //0 is down, 1 is up
     public float gravityBase = -9.81f;
     public float jumpHeight = 3f;
     public float gravity;
-    Vector3 velocity;
+    public Vector3 velocity;
     // Update is called once per frame
     void Update()
     {
