@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        
-
         if(gravMode == 0){
             gravity = gravityBase;
             if(isGrounded && velocity.y < 0){
@@ -35,18 +33,20 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = 2f;
             }
         }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
-
+        //velocity.x = transform.right.x * x * speed;
+       // velocity.z = transform.forward.z *z * speed;
         controller.Move(move * speed * Time.deltaTime);
 
         if(Input.GetButtonDown("Jump") && isGrounded){
             if(gravMode == 0){
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             } else if (gravMode == 1){
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
         }
 
