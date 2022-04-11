@@ -22,15 +22,15 @@ public class GravityGunStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && hasVerticalGun)
         {
             gravityAxis = GravityAxis.yAxis;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && hasHorizontalGun)
         {
             gravityAxis = GravityAxis.xAxis;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasHorizontalGun)
         {
             gravityAxis = GravityAxis.zAxis;
         }
