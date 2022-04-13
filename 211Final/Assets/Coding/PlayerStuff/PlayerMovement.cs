@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 6f;
     public int gravMode = 0; //0 is down, 1 is up
-    public float gravityBase = -9.81f;
-    public float jumpHeight = 3f;
+    public float gravityBase = Physics.gravity.x;
+    public float jumpHeight = 4.3f;
     public float gravity;
     public Vector3 velocity;
     // Update is called once per frame
@@ -44,9 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded){
             if(gravMode == 0){
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);
             } else if (gravMode == 1){
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
         }
 
