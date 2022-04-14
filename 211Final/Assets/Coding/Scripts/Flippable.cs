@@ -110,7 +110,6 @@ public class Flippable : MonoBehaviour
                     gravityGunStatus.YLine.SetActive(false);
                     gravityGunStatus.ZLine.SetActive(false);
                     gravityGunStatus.XLine.transform.position = rb.position;
-                    gravityGunStatus.XLine.transform.rotation = rb.rotation;
                 }
                 break;
             case GravityGunStatus.GravityAxis.yAxis:
