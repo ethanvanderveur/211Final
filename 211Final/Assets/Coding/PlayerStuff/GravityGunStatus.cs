@@ -14,6 +14,7 @@ public class GravityGunStatus : MonoBehaviour
     GameObject XOverlay, YOverlay, ZOverlay;
     public GameObject XLine, YLine, ZLine;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,6 @@ public class GravityGunStatus : MonoBehaviour
         XLine.SetActive(false);
         YLine.SetActive(true);
         ZLine.SetActive(false);
-
     }
 
     // Update is called once per frame

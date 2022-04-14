@@ -18,9 +18,16 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 4.3f;
     public float gravity;
     public Vector3 velocity;
+
+    public AudioSource jumpAudioSource;
+    public AudioSource landAudioSource;
+    public AudioSource stepAudioSource;
     // Update is called once per frame
     void Update()
     {
+        if(!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask)){
+            landAudioSource.Play();
+        }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(gravMode == 0){
@@ -38,6 +45,14 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        if((x != 0 || z != 0) && isGrounded && !stepAudioSource.isPlaying){
+            stepAudioSource.Play();
+        }
+
+        if(((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying){
+            stepAudioSource.Stop();
+        }
+
         Vector3 move = transform.right * x + transform.forward * z;
         //velocity.x = transform.right.x * x * speed;
        // velocity.z = transform.forward.z *z * speed;
@@ -45,8 +60,10 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded){
             if(gravMode == 0){
+                jumpAudioSource.Play();
                 velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);
             } else if (gravMode == 1){
+                jumpAudioSource.Play();
                 velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
         }
