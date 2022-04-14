@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameController gameController;
 
     public CharacterController controller;
     public Transform groundCheck;
@@ -22,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
+
+    private void Start()
+    {
+        gameController = GetComponent<GameController>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -72,11 +79,13 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
 
-        // ==================== RESET SCENE ====================
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Checkpoint")
+        {
+            gameController.hitCheckPoint(other.gameObject);
+        }
     }
 }
