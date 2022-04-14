@@ -17,6 +17,8 @@ public class Flippable : MonoBehaviour
 
     public int flipTimer;
 
+    public AudioSource gunAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ public class Flippable : MonoBehaviour
         outline.OutlineWidth = 8f;
         flipTimer = 0;
         hovered = false;
+
+        gunAudioSource = GameObject.Find("GunAudio").GetComponent<AudioSource>();
     }
 
     private void OnMouseEnter()
@@ -48,6 +52,7 @@ public class Flippable : MonoBehaviour
     {
         if (flipTimer == 0)
         {
+            gunAudioSource.Play();
             switch (gravityGunStatus.gravityAxis)
             {
                 case GravityGunStatus.GravityAxis.xAxis:
@@ -110,7 +115,6 @@ public class Flippable : MonoBehaviour
                     gravityGunStatus.YLine.SetActive(false);
                     gravityGunStatus.ZLine.SetActive(false);
                     gravityGunStatus.XLine.transform.position = rb.position;
-                    gravityGunStatus.XLine.transform.rotation = rb.rotation;
                 }
                 break;
             case GravityGunStatus.GravityAxis.yAxis:
