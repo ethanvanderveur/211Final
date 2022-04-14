@@ -22,11 +22,11 @@ public class RocketBoots : MonoBehaviour
         {
             if (playerMovement.gravMode == 0)
             {
-                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -2f * playerMovement.gravity);
+                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -1f * playerMovement.gravity);
             }
             else if (playerMovement.gravMode == 1)
             {
-                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -2f * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -1f * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
             hasBoosted = true;
         }
