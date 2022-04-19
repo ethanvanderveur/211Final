@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Flippable : MonoBehaviour
 {
-    private const int FLIP_TIME = 500;
+    [SerializeField] private const float FLIP_COOLDOWN_SECONDS = 1f;
+    [SerializeField] private const float TIME_SLOW_DURATION_SECONDS = 5f;
+    [SerializeField] private const float TIME_SLOW_MULTIPLIER = .1f;
 
     [SerializeField]
     public Vector3 gravityMultiplier;
@@ -13,9 +15,13 @@ public class Flippable : MonoBehaviour
     GravityGunStatus gravityGunStatus;
     Outline outline;
 
-    public bool hovered;
+    Vector3 tempVelocityStorage;
+    GravityGunStatus.GravityAxis tempAxisStorage;
 
-    public int flipTimer;
+    public bool hovered, slowed;
+
+    public float flipTimer;
+    public float slowTimer;
 
     public AudioSource gunAudioSource;
 
@@ -23,14 +29,17 @@ public class Flippable : MonoBehaviour
     void Start()
     {
         gravityMultiplier = new Vector3(0, -1, 0);
+        
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         gravityGunStatus = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<GravityGunStatus>();
         outline = GetComponent<Outline>();
         outline.enabled = false;
         outline.OutlineWidth = 8f;
-        flipTimer = 0;
+        flipTimer = 0f;
+        slowTimer = 0f;
         hovered = false;
+        slowed = false;
 
         gunAudioSource = GameObject.Find("GunAudio").GetComponent<AudioSource>();
     }
@@ -48,45 +57,82 @@ public class Flippable : MonoBehaviour
         gravityGunStatus.ZLine.SetActive(false);
         hovered = false;
     }
-    private void OnMouseDown()
+
+    // Handles right click
+    private void OnMouseOver()
     {
-        if (flipTimer == 0)
+        if (Input.GetMouseButtonDown(1) && flipTimer <= 0)
         {
-            gunAudioSource.Play();
             switch (gravityGunStatus.gravityAxis)
             {
                 case GravityGunStatus.GravityAxis.xAxis:
-                    flipTimer = FLIP_TIME;
-                    if (gravityMultiplier.x != 0)
+                    if (gravityMultiplier.x != -1)
                     {
-                        gravityMultiplier.x *= -1;
+                        rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
+                        gravityMultiplier = Vector3.zero;
+                        gravityMultiplier.x = -1;
                     }
-                    else
+                    break;
+                case GravityGunStatus.GravityAxis.yAxis:
+                    if (gravityMultiplier.y != -1)
                     {
+                        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
+                        gravityMultiplier = Vector3.zero;
+                        gravityMultiplier.y = -1;
+                    }
+                    break;
+                case GravityGunStatus.GravityAxis.zAxis:
+                    if (gravityMultiplier.z != -1)
+                    {
+                        rb.velocity = new Vector3(0, 0, rb.velocity.z);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
+                        gravityMultiplier = Vector3.zero;
+                        gravityMultiplier.z = -1;
+                    }
+                    break;
+            }
+        }
+    }
+
+    // Handles left click
+    private void OnMouseDown()
+    {
+        if (flipTimer <= 0)
+        {
+            switch (gravityGunStatus.gravityAxis)
+            {
+                case GravityGunStatus.GravityAxis.xAxis:
+
+                    if (gravityMultiplier.x != 1)
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
                         gravityMultiplier = Vector3.zero;
                         gravityMultiplier.x = 1;
                     }
                     break;
                 case GravityGunStatus.GravityAxis.yAxis:
-                    flipTimer = FLIP_TIME;
-                    if (gravityMultiplier.y != 0)
+                    if (gravityMultiplier.y != 1)
                     {
-                        gravityMultiplier.y *= -1;
-                    }
-                    else
-                    {
+                        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
                         gravityMultiplier = Vector3.zero;
                         gravityMultiplier.y = 1;
                     }
                     break;
                 case GravityGunStatus.GravityAxis.zAxis:
-                    flipTimer = FLIP_TIME;
-                    if (gravityMultiplier.z != 0)
+                    if (gravityMultiplier.z != 1)
                     {
-                        gravityMultiplier.z *= -1;
-                    }
-                    else
-                    {
+                        rb.velocity = new Vector3(0, 0, rb.velocity.z);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
                         gravityMultiplier = Vector3.zero;
                         gravityMultiplier.z = 1;
                     }
@@ -101,7 +147,32 @@ public class Flippable : MonoBehaviour
         // Flip Timer
         if (flipTimer > 0)
         {
-            flipTimer--;
+            flipTimer -= Time.deltaTime;
+        }
+
+        // For Time Slowing
+        if (Input.GetKeyDown(KeyCode.F) && gravityGunStatus.hasTimeSlow && gravityGunStatus.timeSlowCooldown <= 0 && hovered)
+        {
+            tempVelocityStorage = rb.velocity;
+            tempAxisStorage = gravityGunStatus.gravityAxis;
+            rb.velocity = Vector3.zero;
+            gravityGunStatus.slowedAnObject = true;
+            slowed = true;
+            slowTimer = TIME_SLOW_DURATION_SECONDS;
+            
+        }
+
+        // Time slow timer
+        if (slowTimer > 0)
+        {
+            slowTimer -= Time.deltaTime;
+        } else if (slowed)
+        {
+            if (gravityGunStatus.gravityAxis == tempAxisStorage)
+            {
+                rb.velocity = tempVelocityStorage;
+            }
+            slowed = false;
         }
 
         // For swapping color and moving demo axis
@@ -145,7 +216,14 @@ public class Flippable : MonoBehaviour
             case 0:
                 break;
             default:
-                rb.AddForce(new Vector3(Physics.gravity.y*-1 * gravityMultiplier.x, 0, 0) * rb.mass);
+                if (slowed)
+                {
+                    rb.AddForce(new Vector3(Physics.gravity.y * -1 * gravityMultiplier.x * TIME_SLOW_MULTIPLIER, 0, 0) * rb.mass);
+                }
+                else
+                {
+                    rb.AddForce(new Vector3(Physics.gravity.y * -1 * gravityMultiplier.x, 0, 0) * rb.mass);
+                }
                 break;
         }
         switch (gravityMultiplier.y)
@@ -153,7 +231,14 @@ public class Flippable : MonoBehaviour
             case 0:
                 break;
             default:
-                rb.AddForce(new Vector3(0, Physics.gravity.y*-1 * gravityMultiplier.y, 0) * rb.mass);
+                if (slowed)
+                {
+                    rb.AddForce(new Vector3(0, Physics.gravity.y * -1 * gravityMultiplier.y * TIME_SLOW_MULTIPLIER, 0) * rb.mass);
+                }
+                else
+                {
+                    rb.AddForce(new Vector3(0, Physics.gravity.y * -1 * gravityMultiplier.y, 0) * rb.mass);
+                }
                 break;
         }
         switch (gravityMultiplier.z)
@@ -161,7 +246,14 @@ public class Flippable : MonoBehaviour
             case 0:
                 break;
             default:
-                rb.AddForce(new Vector3(0, 0, Physics.gravity.y*-1 * gravityMultiplier.z) * rb.mass);
+                if (slowed)
+                {
+                    rb.AddForce(new Vector3(0, 0, Physics.gravity.y * -1 * gravityMultiplier.z * TIME_SLOW_MULTIPLIER) * rb.mass);
+                }
+                else
+                {
+                    rb.AddForce(new Vector3(0, 0, Physics.gravity.y * -1 * gravityMultiplier.z) * rb.mass);
+                }
                 break;
         }
     }

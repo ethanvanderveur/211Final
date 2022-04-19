@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GravityGunStatus : MonoBehaviour
 {
     public bool hasVerticalGun = false;
     public bool hasHorizontalGun = false;
+    public bool hasTimeSlow = false;
+    public bool hasGravitySuit = false;
 
     [SerializeField]
     public enum GravityAxis {xAxis, yAxis, zAxis};
     public GravityAxis gravityAxis;
 
+    public float TIME_SLOW_COOLDOWN_SECONDS = 1.5f;
+    public float timeSlowCooldown = 0f;
+    public bool slowedAnObject = false;
+
+    Image TimeSlowOverlay;
     GameObject XOverlay, YOverlay, ZOverlay;
     public GameObject XLine, YLine, ZLine;
+
 
 
     // Start is called before the first frame update
@@ -20,6 +29,11 @@ public class GravityGunStatus : MonoBehaviour
     {
         hasVerticalGun = true;
         hasHorizontalGun = true;
+        hasTimeSlow = true;
+        hasGravitySuit = true;
+
+        TimeSlowOverlay = GameObject.Find("TimeSlowOverlay").GetComponent<Image>();
+
         gravityAxis = GravityAxis.yAxis;
         XOverlay = GameObject.Find("XOverlay");
         YOverlay = GameObject.Find("YOverlay");
@@ -40,6 +54,7 @@ public class GravityGunStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Axis control
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasVerticalGun)
         {
             gravityAxis = GravityAxis.yAxis;
@@ -61,5 +76,17 @@ public class GravityGunStatus : MonoBehaviour
             YOverlay.SetActive(true);
             ZOverlay.SetActive(false);
         }
+
+        // Time slow
+        if (timeSlowCooldown > 0)
+        {
+            timeSlowCooldown -= Time.deltaTime;
+        } else if (slowedAnObject && hasTimeSlow)
+        {
+            slowedAnObject = false;
+            timeSlowCooldown = TIME_SLOW_COOLDOWN_SECONDS;
+        }
+
+        TimeSlowOverlay.fillAmount = timeSlowCooldown / TIME_SLOW_COOLDOWN_SECONDS;
     }
 }

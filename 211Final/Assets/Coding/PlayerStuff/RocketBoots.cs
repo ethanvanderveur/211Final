@@ -9,6 +9,8 @@ public class RocketBoots : MonoBehaviour
     public AudioSource boostSource;
     private bool hasBoosted;
 
+    public int gravityMode = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class RocketBoots : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetButtonDown("Jump") && !hasBoosted && !playerMovement.isGrounded)
         {
             if (playerMovement.gravMode == 0)
@@ -31,7 +34,7 @@ public class RocketBoots : MonoBehaviour
             else if (playerMovement.gravMode == 1)
             {
                 boostSource.Play();
-                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -1f * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                playerMovement.velocity.y = -Mathf.Sqrt(playerMovement.jumpHeight * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
             hasBoosted = true;
         }
