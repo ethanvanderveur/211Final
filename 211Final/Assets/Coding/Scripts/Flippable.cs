@@ -57,48 +57,82 @@ public class Flippable : MonoBehaviour
         gravityGunStatus.ZLine.SetActive(false);
         hovered = false;
     }
+
+    // Handles right click
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1) && flipTimer <= 0)
+        {
+            switch (gravityGunStatus.gravityAxis)
+            {
+                case GravityGunStatus.GravityAxis.xAxis:
+                    if (gravityMultiplier.x != -1)
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
+                        gravityMultiplier = Vector3.zero;
+                        gravityMultiplier.x = -1;
+                    }
+                    break;
+                case GravityGunStatus.GravityAxis.yAxis:
+                    if (gravityMultiplier.y != -1)
+                    {
+                        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
+                        gravityMultiplier = Vector3.zero;
+                        gravityMultiplier.y = -1;
+                    }
+                    break;
+                case GravityGunStatus.GravityAxis.zAxis:
+                    if (gravityMultiplier.z != -1)
+                    {
+                        rb.velocity = new Vector3(0, 0, rb.velocity.z);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
+                        gravityMultiplier = Vector3.zero;
+                        gravityMultiplier.z = -1;
+                    }
+                    break;
+            }
+        }
+    }
+
+    // Handles left click
     private void OnMouseDown()
     {
         if (flipTimer <= 0)
         {
-            gunAudioSource.Play();
             switch (gravityGunStatus.gravityAxis)
             {
                 case GravityGunStatus.GravityAxis.xAxis:
-                    rb.velocity = new Vector3(rb.velocity.x, 0, 0);
-                    flipTimer = FLIP_COOLDOWN_SECONDS;
-                    if (gravityMultiplier.x != 0)
+
+                    if (gravityMultiplier.x != 1)
                     {
-                        gravityMultiplier.x *= -1;
-                    }
-                    else
-                    {
+                        rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
                         gravityMultiplier = Vector3.zero;
                         gravityMultiplier.x = 1;
                     }
                     break;
                 case GravityGunStatus.GravityAxis.yAxis:
-                    rb.velocity = new Vector3(0, rb.velocity.y, 0);
-                    flipTimer = FLIP_COOLDOWN_SECONDS;
-                    if (gravityMultiplier.y != 0)
+                    if (gravityMultiplier.y != 1)
                     {
-                        gravityMultiplier.y *= -1;
-                    }
-                    else
-                    {
+                        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
                         gravityMultiplier = Vector3.zero;
                         gravityMultiplier.y = 1;
                     }
                     break;
                 case GravityGunStatus.GravityAxis.zAxis:
-                    rb.velocity = new Vector3(0, 0, rb.velocity.z);
-                    flipTimer = FLIP_COOLDOWN_SECONDS;
-                    if (gravityMultiplier.z != 0)
+                    if (gravityMultiplier.z != 1)
                     {
-                        gravityMultiplier.z *= -1;
-                    }
-                    else
-                    {
+                        rb.velocity = new Vector3(0, 0, rb.velocity.z);
+                        flipTimer = FLIP_COOLDOWN_SECONDS;
+                        gunAudioSource.Play();
                         gravityMultiplier = Vector3.zero;
                         gravityMultiplier.z = 1;
                     }
