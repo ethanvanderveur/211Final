@@ -10,14 +10,14 @@ public class GameController : MonoBehaviour
     [SerializeField]
     GameObject checkpoint;
 
-    GameObject player;
+    GameObject playerCharacter;
 
     // Start is called before the first frame update
     void Start()
     {
         planetNumber = 1;
         checkpoint = null;
-        player = GameObject.FindGameObjectWithTag("PlayerCharacter");
+        playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
     }
 
     // Update is called once per frame
@@ -41,6 +41,6 @@ public class GameController : MonoBehaviour
     {
         //SceneManager.LoadScene("Planet" + planetNumber);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        player.transform.position = checkpoint.transform.position;
+        playerCharacter.transform.position = checkpoint.transform.position;
     }
 }

@@ -23,12 +23,12 @@ public class RocketBoots : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !hasBoosted && !playerMovement.isGrounded)
         {
-            if (playerMovement.playerGrav == PlayerMovement.PlayerGravity.negative)
+            if (playerMovement.gravMode == 0)
             {
                 boostSource.Play();
                 playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -1f * playerMovement.gravity);
             }
-            else if (playerMovement.playerGrav == PlayerMovement.PlayerGravity.positive)
+            else if (playerMovement.gravMode == 1)
             {
                 boostSource.Play();
                 playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -1f * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative

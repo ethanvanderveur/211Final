@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 6f;
     public float jumpHeight = 4.3f;
     public float gravity;
-    public float playerBaseGrav = Physics.gravity.y + 15;
+    public int gravMode = 0;
+    public float gravityBase = 0;
     public Vector3 velocity;
 
-    public enum PlayerGravity {positive, negative}
-    public PlayerGravity playerGrav;
+    GameObject playerCharacter;
 
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
@@ -30,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        playerGrav = PlayerGravity.negative;
         gameController = GetComponent<GameController>();
-        gravityGunStatus = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<GravityGunStatus>();
+        playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
+        gravityGunStatus = playerCharacter.GetComponent<GravityGunStatus>();
     }
 
     // Update is called once per frame
@@ -40,29 +40,37 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && gravityGunStatus.hasGravitySuit)
         {
-            if (playerGrav == PlayerGravity.positive)
+            if (gravMode == 0)
             {
-                playerGrav = PlayerGravity.negative;
+                playerCharacter.transform.Rotate(new Vector3(180, 0, 0));
+                gravMode = 1;
+                
             } else
             {
-                playerGrav = PlayerGravity.positive;
+                playerCharacter.transform.Rotate(new Vector3(180, 0, 0));
+                gravMode = 0;
             }
-        } 
+        }
 
-        if(!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask)){
+        if (!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
+        {
             landAudioSource.Play();
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(playerGrav == PlayerGravity.negative){
-            gravity = playerBaseGrav;
-            if(isGrounded && velocity.y < 0){
+        if (gravMode == 0)
+        {
+            gravity = gravityBase;
+            if (isGrounded && velocity.y < 0)
+            {
                 velocity.y = -2f;
             }
-        } else if (playerGrav == PlayerGravity.positive)
+        }
+        else if (gravMode == 1)
         {
-            gravity = -1 * playerBaseGrav;
-            if(isGrounded && velocity.y > 0){
+            gravity = -1 * gravityBase;
+            if (isGrounded && velocity.y > 0)
+            {
                 velocity.y = 2f;
             }
         }
@@ -70,25 +78,29 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        if((x != 0 || z != 0) && isGrounded && !stepAudioSource.isPlaying){
+        if ((x != 0 || z != 0) && isGrounded && !stepAudioSource.isPlaying)
+        {
             stepAudioSource.Play();
         }
 
-        if(((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying){
+        if (((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying)
+        {
             stepAudioSource.Stop();
         }
 
         Vector3 move = transform.right * x + transform.forward * z;
         //velocity.x = transform.right.x * x * speed;
-       // velocity.z = transform.forward.z *z * speed;
+        // velocity.z = transform.forward.z *z * speed;
         controller.Move(move * speed * Time.deltaTime);
 
-        if(Input.GetButtonDown("Jump") && isGrounded){
-            if(playerGrav == PlayerGravity.negative)
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            if (gravMode == 0)
             {
                 jumpAudioSource.Play();
                 velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);
-            } else if (playerGrav == PlayerGravity.positive)
+            }
+            else if (gravMode == 1)
             {
                 jumpAudioSource.Play();
                 velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
