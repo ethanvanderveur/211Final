@@ -8,6 +8,7 @@ public class GravityGunStatus : MonoBehaviour
     public bool hasVerticalGun = false;
     public bool hasHorizontalGun = false;
     public bool hasTimeSlow = false;
+    public bool hasGravitySuit = false;
 
     [SerializeField]
     public enum GravityAxis {xAxis, yAxis, zAxis};
@@ -29,6 +30,7 @@ public class GravityGunStatus : MonoBehaviour
         hasVerticalGun = true;
         hasHorizontalGun = true;
         hasTimeSlow = true;
+        hasGravitySuit = true;
 
         TimeSlowOverlay = GameObject.Find("TimeSlowOverlay").GetComponent<Image>();
 
