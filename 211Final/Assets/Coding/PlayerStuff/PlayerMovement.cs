@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
 
     GravityGunStatus gravityGunStatus;
+    GameObject cam;
 
     public float speed = 6f;
     public float jumpHeight = 4.3f;
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public int gravMode = 0;
     public float gravityBase = 0;
     public Vector3 velocity;
+    public bool wasMoving = false;
+    public bool isRotatingCamera = false;
 
     GameObject playerCharacter;
 
@@ -28,11 +31,14 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
 
+    public Animator animator; 
+
     private void Start()
     {
         gameController = GetComponent<GameController>();
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
         gravityGunStatus = playerCharacter.GetComponent<GravityGunStatus>();
+        cam = GameObject.Find("PlayerCamera");
     }
 
     // Update is called once per frame
@@ -42,12 +48,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if (gravMode == 0)
             {
-                playerCharacter.transform.Rotate(new Vector3(180, 0, 0));
+                playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
+                cam.transform.Rotate(new Vector3(0, 0, 180));
+                velocity.y = 3f;
+                //cam.transform.Translate(new Vector3(0, 1.2f, 0));
+                StartCoroutine(FlipCam(cam, true));
                 gravMode = 1;
                 
             } else
             {
-                playerCharacter.transform.Rotate(new Vector3(180, 0, 0));
+                playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
+                cam.transform.Rotate(new Vector3(0, 0, 180));
+                velocity.y = -3f;
+                //cam.transform.Translate(new Vector3(0, -1.2f, 0));
+                StartCoroutine(FlipCam(cam, false));
                 gravMode = 0;
             }
         }
@@ -55,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
         {
             landAudioSource.Play();
+            animator.SetTrigger("landing");
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -83,6 +98,16 @@ public class PlayerMovement : MonoBehaviour
             stepAudioSource.Play();
         }
 
+        if((x != 0 || z != 0) && isGrounded){
+            wasMoving = true;
+            animator.SetTrigger("walking");
+        }
+
+        if (x == 0 && z == 0 && wasMoving){
+            wasMoving = false;
+            animator.SetTrigger("stop");
+        }
+
         if (((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying)
         {
             stepAudioSource.Stop();
@@ -103,8 +128,9 @@ public class PlayerMovement : MonoBehaviour
             else if (gravMode == 1)
             {
                 jumpAudioSource.Play();
-                velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                velocity.y = -Mathf.Sqrt(jumpHeight * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
+            animator.SetTrigger("jumping");
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -119,5 +145,26 @@ public class PlayerMovement : MonoBehaviour
         {
             gameController.hitCheckPoint(other.gameObject);
         }
+    }
+
+    IEnumerator FlipCam(GameObject cam, bool positive)
+    {
+        isRotatingCamera = true;
+        for (int i = 0; i < 180; i++)
+        {
+            
+            if (positive)
+            {
+                cam.transform.Rotate(0, 0, 1);
+                //cam.transform.Translate(new Vector3(0, -1.2f / 180, 0));
+            } else
+            {
+                cam.transform.Rotate(0, 0, 1);
+                //cam.transform.Translate(new Vector3(0, 1.2f/180, 0));
+            }
+            yield return new WaitForSeconds(.002f);
+        }
+        isRotatingCamera = false;
+        yield return null;
     }
 }

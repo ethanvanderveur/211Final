@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerCharacter
   - Checkpoint
+  - PersonCamera
   layers:
   - Default
   - TransparentFX
