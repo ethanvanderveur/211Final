@@ -21,12 +21,15 @@ public class PlayerMovement : MonoBehaviour
     public int gravMode = 0;
     public float gravityBase = 0;
     public Vector3 velocity;
+    public bool wasMoving = false;
 
     GameObject playerCharacter;
 
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
+
+    public Animator animator; 
 
     private void Start()
     {
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
         {
             landAudioSource.Play();
+            animator.SetTrigger("landing");
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -83,6 +87,16 @@ public class PlayerMovement : MonoBehaviour
             stepAudioSource.Play();
         }
 
+        if((x != 0 || z != 0) && isGrounded){
+            wasMoving = true;
+            animator.SetTrigger("walking");
+        }
+
+        if (x == 0 && z == 0 && wasMoving){
+            wasMoving = false;
+            animator.SetTrigger("stop");
+        }
+
         if (((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying)
         {
             stepAudioSource.Stop();
@@ -103,8 +117,9 @@ public class PlayerMovement : MonoBehaviour
             else if (gravMode == 1)
             {
                 jumpAudioSource.Play();
-                velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                velocity.y = -Mathf.Sqrt(jumpHeight * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
+            animator.SetTrigger("jumping");
         }
 
         velocity.y += gravity * Time.deltaTime;
