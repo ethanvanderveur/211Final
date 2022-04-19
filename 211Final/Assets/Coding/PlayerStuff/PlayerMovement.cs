@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
 
     GravityGunStatus gravityGunStatus;
+    GameObject cam;
 
     public float speed = 6f;
     public float jumpHeight = 4.3f;
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravityBase = 0;
     public Vector3 velocity;
     public bool wasMoving = false;
+    public bool isRotatingCamera = false;
 
     GameObject playerCharacter;
 
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         gameController = GetComponent<GameController>();
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
         gravityGunStatus = playerCharacter.GetComponent<GravityGunStatus>();
+        cam = GameObject.Find("PlayerCamera");
     }
 
     // Update is called once per frame
@@ -45,12 +48,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if (gravMode == 0)
             {
-                playerCharacter.transform.Rotate(new Vector3(180, 0, 0));
+                playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
+                cam.transform.Rotate(new Vector3(0, 0, 180));
+                velocity.y = 3f;
+                //cam.transform.Translate(new Vector3(0, 1.2f, 0));
+                StartCoroutine(FlipCam(cam, true));
                 gravMode = 1;
                 
             } else
             {
-                playerCharacter.transform.Rotate(new Vector3(180, 0, 0));
+                playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
+                cam.transform.Rotate(new Vector3(0, 0, 180));
+                velocity.y = -3f;
+                //cam.transform.Translate(new Vector3(0, -1.2f, 0));
+                StartCoroutine(FlipCam(cam, false));
                 gravMode = 0;
             }
         }
@@ -134,5 +145,26 @@ public class PlayerMovement : MonoBehaviour
         {
             gameController.hitCheckPoint(other.gameObject);
         }
+    }
+
+    IEnumerator FlipCam(GameObject cam, bool positive)
+    {
+        isRotatingCamera = true;
+        for (int i = 0; i < 180; i++)
+        {
+            
+            if (positive)
+            {
+                cam.transform.Rotate(0, 0, 1);
+                //cam.transform.Translate(new Vector3(0, -1.2f / 180, 0));
+            } else
+            {
+                cam.transform.Rotate(0, 0, 1);
+                //cam.transform.Translate(new Vector3(0, 1.2f/180, 0));
+            }
+            yield return new WaitForSeconds(.002f);
+        }
+        isRotatingCamera = false;
+        yield return null;
     }
 }
