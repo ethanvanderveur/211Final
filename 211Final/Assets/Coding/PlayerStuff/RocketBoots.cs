@@ -31,7 +31,7 @@ public class RocketBoots : MonoBehaviour
             else if (playerMovement.playerGrav == PlayerMovement.PlayerGravity.positive)
             {
                 boostSource.Play();
-                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * 1f * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                playerMovement.velocity.y = Mathf.Sqrt(playerMovement.jumpHeight * -1f * playerMovement.gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
             hasBoosted = true;
         }

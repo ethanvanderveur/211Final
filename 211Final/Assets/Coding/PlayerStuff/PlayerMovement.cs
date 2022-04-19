@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 6f;
     public float jumpHeight = 4.3f;
     public float gravity;
+    public float playerBaseGrav = Physics.gravity.y + 15;
     public Vector3 velocity;
 
     public enum PlayerGravity {positive, negative}
@@ -54,13 +55,13 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(playerGrav == PlayerGravity.negative){
-            gravity = Physics.gravity.y;
+            gravity = playerBaseGrav;
             if(isGrounded && velocity.y < 0){
                 velocity.y = -2f;
             }
         } else if (playerGrav == PlayerGravity.positive)
         {
-            gravity = -1 * Physics.gravity.y;
+            gravity = -1 * playerBaseGrav;
             if(isGrounded && velocity.y > 0){
                 velocity.y = 2f;
             }
