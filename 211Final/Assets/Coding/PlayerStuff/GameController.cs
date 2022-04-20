@@ -7,18 +7,22 @@ public class GameController : MonoBehaviour
 {
     [SerializeField]
     public int planetNumber;
-    [SerializeField]
-    GameObject checkpoint;
 
-    GameObject playerCharacter;
+    GameObject currentCheckpoint;
+
+    [SerializeField]
+    static GameObject playerCharacter;
 
     // Start is called before the first frame update
     void Start()
     {
-        planetNumber = 1;
-        checkpoint = null;
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
+        currentCheckpoint = GameObject.Find(PlayerPrefs.GetString("curCheck"));
+        Debug.Log(currentCheckpoint.name);
+        planetNumber = 1;
+        StartCoroutine(Respawn());
     }
+
 
     // Update is called once per frame
     void Update()
@@ -33,14 +37,22 @@ public class GameController : MonoBehaviour
 
     public void hitCheckPoint(GameObject ch)
     {
-        checkpoint = ch;
+        currentCheckpoint = ch;
         Debug.Log("Hit Checkpoint");
     }
 
     public void playerDeath()
     {
         //SceneManager.LoadScene("Planet" + planetNumber);
+        PlayerPrefs.SetString("curCheck", currentCheckpoint.name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        playerCharacter.transform.position = checkpoint.transform.position;
+
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1);
+        playerCharacter.transform.Translate(new Vector3(0, 100, 0));
+        Debug.Log("Transform ran");
     }
 }

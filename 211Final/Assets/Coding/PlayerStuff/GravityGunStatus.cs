@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class GravityGunStatus : MonoBehaviour
 {
-    public bool hasVerticalGun = false;
-    public bool hasHorizontalGun = false;
-    public bool hasTimeSlow = false;
-    public bool hasGravitySuit = false;
+    public static bool hasVerticalGun = false;
+    public static bool hasHorizontalGun = false;
+    public static bool hasTimeSlow = false;
+    public static bool hasGravitySuit = false;
 
     [SerializeField]
     public enum GravityAxis {xAxis, yAxis, zAxis};

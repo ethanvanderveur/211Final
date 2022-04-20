@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-
-    public float mouseSensitivity = 500f;
+    public float mouseSensitivity = 2f;
 
     public Transform playerBody;
 
@@ -18,6 +17,7 @@ public class MouseLook : MonoBehaviour
     {
         playerMovement = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<PlayerMovement>();
         Cursor.lockState = CursorLockMode.Locked;
+        playerBody = playerMovement.transform;
     }
 
     // Update is called once per frame
@@ -25,8 +25,8 @@ public class MouseLook : MonoBehaviour
     {
         if (!playerMovement.isRotatingCamera)
         {
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
             yRotation -= mouseY;
             yRotation = Mathf.Clamp(yRotation, -90f, 90f);
