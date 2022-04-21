@@ -81,13 +81,39 @@ public class GameController : MonoBehaviour
         Debug.Log("Hit " + currentCheckpoint.name);
 
         // Logic for adding and removing items
-        if (currentCheckpoint.name == "Checkpoint2")
+        switch (currentCheckpoint.name)
         {
-            GravityGunStatus.hasGravitySuit = true;
-        } else
-        {
-            GravityGunStatus.hasGravitySuit = false;
-        }
+            case "Checkpoint1":
+                GravityGunStatus.hasVerticalGun = true;
+                GravityGunStatus.hasHorizontalGun = false;
+                GravityGunStatus.hasTimeSlow = false;
+                GravityGunStatus.hasGravitySuit = false;
+                break;
+             case "Checkpoint2":
+                GravityGunStatus.hasVerticalGun = true;
+                GravityGunStatus.hasHorizontalGun = true;
+                GravityGunStatus.hasTimeSlow = false;
+                GravityGunStatus.hasGravitySuit = false;
+                break;
+            case "Checkpoint3":
+                GravityGunStatus.hasVerticalGun = true;
+                GravityGunStatus.hasHorizontalGun = true;
+                GravityGunStatus.hasTimeSlow = true;
+                GravityGunStatus.hasGravitySuit = false;
+                break;
+            case "Checkpoint4":
+                GravityGunStatus.hasVerticalGun = true;
+                GravityGunStatus.hasHorizontalGun = true;
+                GravityGunStatus.hasTimeSlow = true;
+                GravityGunStatus.hasGravitySuit = true;
+                break;
+            default:
+                GravityGunStatus.hasVerticalGun = false;
+                GravityGunStatus.hasHorizontalGun = false;
+                GravityGunStatus.hasTimeSlow = false;
+                GravityGunStatus.hasGravitySuit = false;
+                break;
+        } 
 
 
     }
