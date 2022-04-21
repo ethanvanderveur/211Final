@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 velocity;
     public bool wasMoving = false;
     public bool isRotatingCamera = false;
+    public bool hasFlipped = false;
 
     GameObject playerCharacter;
 
@@ -44,8 +45,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && GravityGunStatus.hasGravitySuit)
+        if (Input.GetKeyDown(KeyCode.Q) && GravityGunStatus.hasGravitySuit && !hasFlipped)
         {
+            hasFlipped = true;
             if (gravMode == 0)
             {
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
@@ -70,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         {
             landAudioSource.Play();
             animator.SetTrigger("landing");
+            hasFlipped = false;
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 

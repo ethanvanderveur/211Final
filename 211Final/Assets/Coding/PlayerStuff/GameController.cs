@@ -118,6 +118,12 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void nextPlanet()
+    {
+        savePlayerInfo();
+        SceneManager.LoadScene("Planet" + planetNumber);
+    }
+
     public void playerDeath()
     {
         //SceneManager.LoadScene("Planet" + planetNumber);
@@ -141,7 +147,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             yield return new WaitForEndOfFrame();
-            playerCharacter.transform.position = currentCheckpoint.transform.position;
+            playerCharacter.transform.position = currentCheckpoint.transform.position + new Vector3(0, .5f, 0);
         }
     }
 }
