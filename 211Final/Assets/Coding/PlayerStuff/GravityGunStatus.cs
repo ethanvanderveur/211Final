@@ -27,10 +27,6 @@ public class GravityGunStatus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hasVerticalGun = true;
-        hasHorizontalGun = true;
-        hasTimeSlow = true;
-        hasGravitySuit = true;
 
         TimeSlowOverlay = GameObject.Find("TimeSlowOverlay").GetComponent<Image>();
 

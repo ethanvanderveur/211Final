@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -13,13 +14,52 @@ public class GameController : MonoBehaviour
     [SerializeField]
     static GameObject playerCharacter;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        // Load player info back in
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
         currentCheckpoint = GameObject.Find(PlayerPrefs.GetString("curCheck"));
-        Debug.Log(currentCheckpoint.name);
-        planetNumber = 1;
+        planetNumber = PlayerPrefs.GetInt("planetNumber");
+
+        switch (PlayerPrefs.GetString("hasVerticalGun"))
+        {
+            case "True":
+                GravityGunStatus.hasVerticalGun = true;
+                break;
+            default:
+                GravityGunStatus.hasVerticalGun = false;
+                break;
+        }
+        switch (PlayerPrefs.GetString("hasHorizontalGun"))
+        {
+            case "True":
+                GravityGunStatus.hasHorizontalGun = true;
+                break;
+            default:
+                GravityGunStatus.hasHorizontalGun = false;
+                break;
+        }
+        switch (PlayerPrefs.GetString("hasTimeSlow"))
+        {
+            case "True":
+                GravityGunStatus.hasTimeSlow = true;
+                break;
+            default:
+                GravityGunStatus.hasTimeSlow = false;
+                break;
+        }
+        switch (PlayerPrefs.GetString("hasGravitySuit"))
+        {
+            case "True":
+                GravityGunStatus.hasGravitySuit = true;
+                break;
+            default:
+                GravityGunStatus.hasGravitySuit = false;
+                break;
+        }
+
         StartCoroutine(Respawn());
     }
 
@@ -38,21 +78,44 @@ public class GameController : MonoBehaviour
     public void hitCheckPoint(GameObject ch)
     {
         currentCheckpoint = ch;
-        Debug.Log("Hit Checkpoint");
+        Debug.Log("Hit " + currentCheckpoint.name);
+
+        // Logic for adding and removing items
+        if (currentCheckpoint.name == "Checkpoint2")
+        {
+            GravityGunStatus.hasGravitySuit = true;
+        } else
+        {
+            GravityGunStatus.hasGravitySuit = false;
+        }
+
+
     }
 
     public void playerDeath()
     {
         //SceneManager.LoadScene("Planet" + planetNumber);
-        PlayerPrefs.SetString("curCheck", currentCheckpoint.name);
+        savePlayerInfo();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 
+    private void savePlayerInfo()
+    {
+        PlayerPrefs.SetString("curCheck", currentCheckpoint.name);
+        PlayerPrefs.SetString("hasVerticalGun", GravityGunStatus.hasVerticalGun.ToString());
+        PlayerPrefs.SetString("hasHorizontalGun", GravityGunStatus.hasHorizontalGun.ToString());
+        PlayerPrefs.SetString("hasTimeSlow", GravityGunStatus.hasTimeSlow.ToString());
+        PlayerPrefs.SetString("hasGravitySuit", GravityGunStatus.hasGravitySuit.ToString());
+        PlayerPrefs.SetInt("planetNumber", planetNumber);
+    }
+
     IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(1);
-        playerCharacter.transform.Translate(new Vector3(0, 100, 0));
-        Debug.Log("Transform ran");
+        for (int i = 0; i < 4; i++)
+        {
+            yield return new WaitForEndOfFrame();
+            playerCharacter.transform.position = currentCheckpoint.transform.position;
+        }
     }
 }
