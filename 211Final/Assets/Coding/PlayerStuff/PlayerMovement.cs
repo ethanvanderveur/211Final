@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && gravityGunStatus.hasGravitySuit)
+        if (Input.GetKeyDown(KeyCode.Q) && GravityGunStatus.hasGravitySuit)
         {
             if (gravMode == 0)
             {
