@@ -151,7 +151,7 @@ public class Flippable : MonoBehaviour
         }
 
         // For Time Slowing
-        if (Input.GetKeyDown(KeyCode.F) && gravityGunStatus.hasTimeSlow && gravityGunStatus.timeSlowCooldown <= 0 && hovered)
+        if (Input.GetKeyDown(KeyCode.F) && GravityGunStatus.hasTimeSlow && gravityGunStatus.timeSlowCooldown <= 0 && hovered)
         {
             tempVelocityStorage = rb.velocity;
             tempAxisStorage = gravityGunStatus.gravityAxis;
