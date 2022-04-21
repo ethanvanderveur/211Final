@@ -9,7 +9,7 @@ public class Flippable : MonoBehaviour
     [SerializeField] private const float TIME_SLOW_MULTIPLIER = .1f;
 
     [SerializeField]
-    public Vector3 gravityMultiplier;
+    public Vector3 gravityMultiplier = new Vector3(0, -1, 0);
 
     Rigidbody rb;
     GravityGunStatus gravityGunStatus;
@@ -28,7 +28,6 @@ public class Flippable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gravityMultiplier = new Vector3(0, -1, 0);
         
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
