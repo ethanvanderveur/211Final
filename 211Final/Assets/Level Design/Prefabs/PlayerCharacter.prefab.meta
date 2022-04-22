@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:211Final/Assets/Level Design/Prefabs/PlayerCharacter.prefab.meta
 guid: 69bd62bfbebc718479587bd7fc793d9a
+========
+guid: d74089bf12172d540a07a3bab0d6edef
+>>>>>>>> Coding1Real:211Final/Assets/Coding/Prefabs/PlayerCharacter 1.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
