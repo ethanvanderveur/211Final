@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("stop");
         }
 
-        if (((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying)
+        if (((x == 0 && z == 0) || !isGrounded || PauseMenu.GameIsPaused) && stepAudioSource.isPlaying)
         {
             stepAudioSource.Stop();
         }
