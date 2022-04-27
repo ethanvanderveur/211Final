@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource stepAudioSource;
     public AudioSource flipAudioSource;
 
-    public Animator animator; 
+    public Animator animator;
 
     private void Start()
     {
@@ -58,8 +58,9 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(FlipCam(cam, true));
                 gravMode = 1;
                 flipAudioSource.Play();
-                
-            } else
+
+            }
+            else
             {
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
                 cam.transform.Rotate(new Vector3(0, 0, 180));
@@ -104,12 +105,14 @@ public class PlayerMovement : MonoBehaviour
             stepAudioSource.Play();
         }
 
-        if((x != 0 || z != 0) && isGrounded){
+        if ((x != 0 || z != 0) && isGrounded)
+        {
             wasMoving = true;
             animator.SetTrigger("walking");
         }
 
-        if (x == 0 && z == 0 && wasMoving){
+        if (x == 0 && z == 0 && wasMoving)
+        {
             wasMoving = false;
             animator.SetTrigger("stop");
         }
@@ -151,6 +154,10 @@ public class PlayerMovement : MonoBehaviour
         {
             gameController.hitCheckPoint(other.gameObject);
         }
+        else if (other.tag == "DeathTrigger")
+        {
+            gameController.playerDeath();
+        }
     }
 
     IEnumerator FlipCam(GameObject cam, bool positive)
@@ -158,12 +165,13 @@ public class PlayerMovement : MonoBehaviour
         isRotatingCamera = true;
         for (int i = 0; i < 180; i++)
         {
-            
+
             if (positive)
             {
                 cam.transform.Rotate(0, 0, 1);
                 //cam.transform.Translate(new Vector3(0, -1.2f / 180, 0));
-            } else
+            }
+            else
             {
                 cam.transform.Rotate(0, 0, 1);
                 //cam.transform.Translate(new Vector3(0, 1.2f/180, 0));
