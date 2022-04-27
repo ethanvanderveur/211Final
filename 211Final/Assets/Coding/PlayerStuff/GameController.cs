@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
                 GravityGunStatus.hasTimeSlow = false;
                 GravityGunStatus.hasGravitySuit = false;
                 break;
-             case "Checkpoint2":
+            case "Checkpoint2":
                 GravityGunStatus.hasVerticalGun = true;
                 GravityGunStatus.hasHorizontalGun = true;
                 GravityGunStatus.hasTimeSlow = false;
@@ -108,12 +108,8 @@ public class GameController : MonoBehaviour
                 GravityGunStatus.hasGravitySuit = true;
                 break;
             default:
-                GravityGunStatus.hasVerticalGun = false;
-                GravityGunStatus.hasHorizontalGun = false;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
                 break;
-        } 
+        }
 
 
     }
