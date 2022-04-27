@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
+    public AudioSource flipAudioSource;
 
     public Animator animator; 
 
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
                 //cam.transform.Translate(new Vector3(0, 1.2f, 0));
                 StartCoroutine(FlipCam(cam, true));
                 gravMode = 1;
+                flipAudioSource.Play();
                 
             } else
             {
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
                 //cam.transform.Translate(new Vector3(0, -1.2f, 0));
                 StartCoroutine(FlipCam(cam, false));
                 gravMode = 0;
+                flipAudioSource.Play();
             }
         }
 
@@ -111,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("stop");
         }
 
-        if (((x == 0 && z == 0) || !isGrounded) && stepAudioSource.isPlaying)
+        if (((x == 0 && z == 0) || !isGrounded || PauseMenu.GameIsPaused) && stepAudioSource.isPlaying)
         {
             stepAudioSource.Stop();
         }
