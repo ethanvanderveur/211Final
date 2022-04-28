@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource stepAudioSource;
     public AudioSource flipAudioSource;
 
-    public Animator animator;
+    //public Animator animator;
 
     private void Start()
     {
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
         {
             landAudioSource.Play();
-            animator.SetTrigger("landing");
+            //animator.SetTrigger("landing");
             hasFlipped = false;
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -108,13 +108,13 @@ public class PlayerMovement : MonoBehaviour
         if ((x != 0 || z != 0) && isGrounded)
         {
             wasMoving = true;
-            animator.SetTrigger("walking");
+            //animator.SetTrigger("walking");
         }
 
         if (x == 0 && z == 0 && wasMoving)
         {
             wasMoving = false;
-            animator.SetTrigger("stop");
+            //animator.SetTrigger("stop");
         }
 
         if (((x == 0 && z == 0) || !isGrounded || PauseMenu.GameIsPaused) && stepAudioSource.isPlaying)
@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpAudioSource.Play();
                 velocity.y = -Mathf.Sqrt(jumpHeight * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
             }
-            animator.SetTrigger("jumping");
+            //animator.SetTrigger("jumping");
         }
 
         velocity.y += gravity * Time.deltaTime;
