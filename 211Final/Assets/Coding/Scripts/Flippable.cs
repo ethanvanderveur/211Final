@@ -255,5 +255,17 @@ public class Flippable : MonoBehaviour
                 }
                 break;
         }
+
+        //moving player on top of it
+
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "groundCheck" && !Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("check hit");
+            other.gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().velocity.y = rb.velocity.y;
+        }
     }
 }
