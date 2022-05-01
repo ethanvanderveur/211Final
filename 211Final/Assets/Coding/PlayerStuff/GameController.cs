@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
 
     }
 
+
     public void hitCheckPoint(GameObject ch)
     {
         currentCheckpoint = ch;
