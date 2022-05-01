@@ -149,6 +149,7 @@ public class Flippable : MonoBehaviour
             flipTimer -= Time.deltaTime;
         }
 
+
         // For Time Slowing
         if (Input.GetKeyDown(KeyCode.F) && GravityGunStatus.hasTimeSlow && gravityGunStatus.timeSlowCooldown <= 0 && hovered)
         {
@@ -254,6 +255,35 @@ public class Flippable : MonoBehaviour
                     rb.AddForce(new Vector3(0, 0, Physics.gravity.y * -1 * gravityMultiplier.z) * rb.mass);
                 }
                 break;
+        }
+
+        //moving player on top of it
+
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "groundCheck" && !Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("check hit");
+            other.gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().velocity.y = rb.velocity.y;
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Checkpoint")
+        {
+            rb.velocity = new Vector3(-rb.velocity.x,-rb.velocity.y,-rb.velocity.z);
+            gravityMultiplier = Vector3.zero;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Checkpoint")
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 }

@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     static GameObject playerCharacter;
 
+    public AudioSource deathAudio;
+    public AudioSource respawnAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +77,7 @@ public class GameController : MonoBehaviour
 
     }
 
+
     public void hitCheckPoint(GameObject ch)
     {
         currentCheckpoint = ch;
@@ -128,6 +131,7 @@ public class GameController : MonoBehaviour
     {
         //SceneManager.LoadScene("Planet" + planetNumber);
         savePlayerInfo();
+        deathAudio.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
@@ -149,5 +153,6 @@ public class GameController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             playerCharacter.transform.position = currentCheckpoint.transform.position + new Vector3(0, .5f, 0);
         }
+        respawnAudio.Play();
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - PlayerCharacter
   - Checkpoint
   - PersonCamera
+  - DeathTrigger
+  - groundCheck
+  - CharacterHitBox
   layers:
   - Default
   - TransparentFX
