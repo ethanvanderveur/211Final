@@ -20,6 +20,10 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetString("curCheck") == "")
+        {
+            PlayerPrefs.SetString("curCheck", "Checkpoint1");
+        }
         // Load player info back in
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
         currentCheckpoint = GameObject.Find(PlayerPrefs.GetString("curCheck"));
@@ -92,7 +96,7 @@ public class GameController : MonoBehaviour
                 GravityGunStatus.hasTimeSlow = false;
                 GravityGunStatus.hasGravitySuit = false;
                 break;
-             case "Checkpoint2":
+            case "Checkpoint2":
                 GravityGunStatus.hasVerticalGun = true;
                 GravityGunStatus.hasHorizontalGun = true;
                 GravityGunStatus.hasTimeSlow = false;
@@ -116,7 +120,7 @@ public class GameController : MonoBehaviour
                 GravityGunStatus.hasTimeSlow = false;
                 GravityGunStatus.hasGravitySuit = false;
                 break;
-        } 
+        }
 
 
     }
