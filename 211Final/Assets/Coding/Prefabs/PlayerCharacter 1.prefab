@@ -937,9 +937,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6515022641927393266}
+  - component: {fileID: 8698417199093663970}
   m_Layer: 0
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: groundCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -958,6 +959,19 @@ Transform:
   m_Father: {fileID: 6515022642819174368}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8698417199093663970
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6515022641927393267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.047276407, y: 0.1320061, z: 0.07659617}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6515022642390029594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1214,6 @@ MonoBehaviour:
   landAudioSource: {fileID: 5057359270327083935}
   stepAudioSource: {fileID: 2509742652925785496}
   flipAudioSource: {fileID: 2965915458159661831}
-  animator: {fileID: 5347090522451830000}
 --- !u!114 &6515022642819174370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,10 +2495,5 @@ PrefabInstance:
 --- !u!4 &5347090522442795880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400120, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
-  m_PrefabInstance: {fileID: 5347090522442404240}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5347090522451830000 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
   m_PrefabInstance: {fileID: 5347090522442404240}
   m_PrefabAsset: {fileID: 0}

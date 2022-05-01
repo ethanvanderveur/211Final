@@ -8,6 +8,8 @@ TagManager:
   - Checkpoint
   - PersonCamera
   - DeathTrigger
+  - groundCheck
+  - CharacterHitBox
   layers:
   - Default
   - TransparentFX

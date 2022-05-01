@@ -28,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject playerCharacter;
 
+    public float jumpCheckTimer = 0;
+    public float jumpCheckMax = 1;
+
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
@@ -72,13 +75,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if(jumpCheckTimer > 0){
+            jumpCheckTimer -= Time.deltaTime;
+            isGrounded = false;
+        }
+        if(jumpCheckTimer <= 0){
+            groundCheck.gameObject.SetActive(true);
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        }
+
         if (!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
         {
             landAudioSource.Play();
             //animator.SetTrigger("landing");
             hasFlipped = false;
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (gravMode == 0)
         {
@@ -133,11 +144,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumpAudioSource.Play();
                 velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);
+                groundCheck.gameObject.SetActive(false);
+                jumpCheckTimer = jumpCheckMax;
             }
             else if (gravMode == 1)
             {
                 jumpAudioSource.Play();
-                velocity.y = -Mathf.Sqrt(jumpHeight * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                velocity.y = -Mathf.Sqrt(jumpHeight * gravity);
+                groundCheck.gameObject.SetActive(false);
+                jumpCheckTimer = jumpCheckMax;
             }
             //animator.SetTrigger("jumping");
         }
@@ -147,6 +162,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
