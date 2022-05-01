@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+
+
 namespace Lightbug.LaserMachine
 {
 
@@ -59,6 +62,9 @@ public class LaserMachine : MonoBehaviour {
 
             GameObject newObj = new GameObject("lineRenderer_" + i.ToString());
 
+            newObj.tag = "DeathTrigger";
+          
+
             if( m_currentProperties.m_physicsType == LaserProperties.PhysicsType.Physics2D )
                 newObj.transform.position = (Vector2)transform.position;
             else
@@ -69,6 +75,8 @@ public class LaserMachine : MonoBehaviour {
             newObj.transform.position += newObj.transform.forward * m_currentProperties.m_minRadialDistance;
 
             newObj.AddComponent<LineRenderer>();
+           
+    
 
             if( m_assignLaserMaterial )
                 newObj.GetComponent<LineRenderer>().material = m_data.m_laserMaterial;
@@ -94,11 +102,13 @@ public class LaserMachine : MonoBehaviour {
             element.impact = false;
 
             elementsList.Add(element);
+
+            newObj.AddComponent<BoxCollider>();
+            newObj.GetComponent<BoxCollider>().isTrigger = true;
         }
         
 	}
-        
-       
+    
 	void Update () {
 
         if (m_currentProperties.m_intermittent)
@@ -118,6 +128,8 @@ public class LaserMachine : MonoBehaviour {
 
         foreach (LaserElement element in elementsList)
         {
+
+
             if ( m_currentProperties.m_rotate )
             {
                 if ( m_currentProperties.m_rotateClockwise )
@@ -125,7 +137,6 @@ public class LaserMachine : MonoBehaviour {
                 else
                     element.transform.RotateAround(transform.position, transform.up, -Time.deltaTime * m_currentProperties.m_rotationSpeed);
             }
-
 
             if (m_active)
             {
@@ -142,8 +153,10 @@ public class LaserMachine : MonoBehaviour {
                     );  
 
 
-                    if (hitInfo3D.collider)
+                    if (hitInfo3D.collider && hitInfo3D.collider.tag != "PlayerCharacter")
                     {
+                     
+                    
                         element.lineRenderer.SetPosition(1, hitInfo3D.point);
 
                         if( m_assignSparks )
@@ -151,6 +164,8 @@ public class LaserMachine : MonoBehaviour {
                             element.sparks.transform.position = hitInfo3D.point; //new Vector3(rhit.point.x, rhit.point.y, transform.position.z);
                             element.sparks.transform.rotation = Quaternion.LookRotation( hitInfo3D.normal ) ;
                         }
+                        
+                    
 
                         /*
                         EXAMPLE : In this line you can add whatever functionality you want, 
@@ -158,6 +173,8 @@ public class LaserMachine : MonoBehaviour {
                         DoAction();
                         */
 
+                    
+                        
                     }
                     else
                     {
@@ -220,17 +237,14 @@ public class LaserMachine : MonoBehaviour {
                 if( m_assignSparks )
                     element.sparks.SetActive(false);
             }
+
+          
         }
         
     }
 
-    /*
-    EXAMPLE : 
-    void DoAction()
-    {
 
-    }
-    */
+
 
 	
 }
