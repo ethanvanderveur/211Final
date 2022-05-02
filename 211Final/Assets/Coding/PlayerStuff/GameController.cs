@@ -92,24 +92,6 @@ public class GameController : MonoBehaviour
         {
             case "Checkpoint1":
                 GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = false;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
-                break;
-            case "Checkpoint2":
-                GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = true;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
-                break;
-            case "Checkpoint3":
-                GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = true;
-                GravityGunStatus.hasTimeSlow = true;
-                GravityGunStatus.hasGravitySuit = false;
-                break;
-            case "Checkpoint4":
-                GravityGunStatus.hasVerticalGun = true;
                 GravityGunStatus.hasHorizontalGun = true;
                 GravityGunStatus.hasTimeSlow = true;
                 GravityGunStatus.hasGravitySuit = true;
