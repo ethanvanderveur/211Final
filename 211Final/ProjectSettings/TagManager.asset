@@ -10,6 +10,7 @@ TagManager:
   - DeathTrigger
   - groundCheck
   - CharacterHitBox
+  - SignMenu
   layers:
   - Default
   - TransparentFX

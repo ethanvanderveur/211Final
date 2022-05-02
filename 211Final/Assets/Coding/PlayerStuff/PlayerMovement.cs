@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
     public AudioSource flipAudioSource;
+    public AudioSource checkpointAudioSource;
 
     //public Animator animator;
 
@@ -176,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Checkpoint")
         {
             gameController.hitCheckPoint(other.gameObject);
+            checkpointAudioSource.Play();
         }
         else if (other.tag == "DeathTrigger")
         {
