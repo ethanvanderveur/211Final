@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.00f;
     public LayerMask groundMask;
     public bool isGrounded;
 
@@ -75,11 +75,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(jumpCheckTimer > 0){
+        if (jumpCheckTimer > 0)
+        {
             jumpCheckTimer -= Time.deltaTime;
             isGrounded = false;
         }
-        if(jumpCheckTimer <= 0){
+        if (jumpCheckTimer <= 0)
+        {
             groundCheck.gameObject.SetActive(true);
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         }
