@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 40770816}
   - component: {fileID: 40770815}
   - component: {fileID: 40770814}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (31)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 57564744}
   - component: {fileID: 57564743}
   - component: {fileID: 57564742}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (15)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 105267199}
   - component: {fileID: 105267198}
   - component: {fileID: 105267197}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (12)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 173627865}
   - component: {fileID: 173627864}
   - component: {fileID: 173627863}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (38)
   m_TagString: DeathTag
   m_Icon: {fileID: 0}
@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: 241631822}
   - component: {fileID: 241631821}
   - component: {fileID: 241631820}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (1)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -2170,7 +2170,7 @@ Transform:
   m_LocalScale: {x: -29.858189, y: 1.4888899, z: 56.03392}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -13.291, y: 0, z: 0}
 --- !u!1 &255490677
 GameObject:
@@ -2470,7 +2470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 323904723}
   - component: {fileID: 323904722}
   - component: {fileID: 323904721}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (7)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -2809,7 +2809,7 @@ Transform:
   m_LocalScale: {x: -49.848454, y: 1.4888899, z: 102.51107}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 94.71301, y: 86.165, z: 261.486}
 --- !u!1 &324583225
 GameObject:
@@ -2999,7 +2999,7 @@ Transform:
   m_LocalScale: {x: -57.393734, y: 1.4888899, z: 125.62869}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 92.70599, y: -5.807007, z: 75.982}
 --- !u!1 &330033825
 GameObject:
@@ -3013,7 +3013,7 @@ GameObject:
   - component: {fileID: 330033829}
   - component: {fileID: 330033828}
   - component: {fileID: 330033827}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (25)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -3105,7 +3105,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7074082786264884010, guid: daae56ac34a827f45ba1b292b41d1a91, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7074082786264884010, guid: daae56ac34a827f45ba1b292b41d1a91, type: 3}
       propertyPath: m_LocalScale.x
@@ -3583,7 +3583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -3651,7 +3651,7 @@ GameObject:
   - component: {fileID: 403544285}
   - component: {fileID: 403544284}
   - component: {fileID: 403544283}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (11)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -3747,7 +3747,7 @@ GameObject:
   - component: {fileID: 403926798}
   - component: {fileID: 403926797}
   m_Layer: 6
-  m_Name: Checkpoint2
+  m_Name: Checkpoint63
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4005,7 +4005,7 @@ GameObject:
   - component: {fileID: 482886593}
   - component: {fileID: 482886592}
   - component: {fileID: 482886591}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (28)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -4088,6 +4088,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482886589}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &488624327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.7245035
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.552255
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 34.488853
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216761, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394496614182216767, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+      propertyPath: m_Name
+      value: NewestPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
 --- !u!1001 &491975185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4463,7 +4520,7 @@ GameObject:
   - component: {fileID: 533113372}
   - component: {fileID: 533113371}
   - component: {fileID: 533113370}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (10)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -4563,7 +4620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
-      value: 275.2556
+      value: 272.39294
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.y
@@ -4575,15 +4632,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.9
+      value: -50.6187
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 208.6
+      value: 209.7953
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 240.9
+      value: 241.1968
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4627,7 +4684,7 @@ GameObject:
   - component: {fileID: 541316538}
   - component: {fileID: 541316537}
   - component: {fileID: 541316536}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (2)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -4708,7 +4765,7 @@ Transform:
   m_LocalScale: {x: -28.88488, y: 1.4888899, z: 25.34003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -4.393, y: 0, z: 0}
 --- !u!1 &563183261
 GameObject:
@@ -5430,7 +5487,7 @@ GameObject:
   - component: {fileID: 617205650}
   - component: {fileID: 617205649}
   - component: {fileID: 617205648}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (42)
   m_TagString: DeathTag
   m_Icon: {fileID: 0}
@@ -5525,7 +5582,7 @@ GameObject:
   - component: {fileID: 625153302}
   - component: {fileID: 625153301}
   - component: {fileID: 625153300}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (30)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -5810,7 +5867,7 @@ GameObject:
   - component: {fileID: 690614145}
   - component: {fileID: 690614144}
   - component: {fileID: 690614143}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (9)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -6410,7 +6467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -6478,7 +6535,7 @@ GameObject:
   - component: {fileID: 736297536}
   - component: {fileID: 736297535}
   - component: {fileID: 736297534}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (18)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -6859,7 +6916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -7212,7 +7269,7 @@ GameObject:
   - component: {fileID: 816610736}
   - component: {fileID: 816610735}
   - component: {fileID: 816610734}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (41)
   m_TagString: DeathTag
   m_Icon: {fileID: 0}
@@ -7592,7 +7649,7 @@ GameObject:
   - component: {fileID: 891129746}
   - component: {fileID: 891129745}
   - component: {fileID: 891129744}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (27)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -7687,7 +7744,7 @@ GameObject:
   - component: {fileID: 891500567}
   - component: {fileID: 891500566}
   - component: {fileID: 891500565}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (5)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -7768,7 +7825,7 @@ Transform:
   m_LocalScale: {x: -57.393734, y: 1.4888899, z: 128.42046}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 94.087006, y: 48.490005, z: -28.976013}
 --- !u!1 &915823016
 GameObject:
@@ -7877,7 +7934,7 @@ GameObject:
   - component: {fileID: 924520988}
   - component: {fileID: 924520987}
   - component: {fileID: 924520986}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (23)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -7974,7 +8031,7 @@ GameObject:
   - component: {fileID: 951923284}
   m_Layer: 6
   m_Name: Ceiling (44)
-  m_TagString: DeathTag
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8163,7 +8220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -8231,7 +8288,7 @@ GameObject:
   - component: {fileID: 999316724}
   - component: {fileID: 999316723}
   - component: {fileID: 999316722}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (26)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -8612,7 +8669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -9034,7 +9091,7 @@ GameObject:
   - component: {fileID: 1120103218}
   - component: {fileID: 1120103217}
   - component: {fileID: 1120103216}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (16)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -9130,7 +9187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -9198,7 +9255,7 @@ GameObject:
   - component: {fileID: 1155603600}
   - component: {fileID: 1155603599}
   - component: {fileID: 1155603598}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (14)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -9293,7 +9350,7 @@ GameObject:
   - component: {fileID: 1164792285}
   - component: {fileID: 1164792284}
   - component: {fileID: 1164792283}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (22)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -9979,7 +10036,7 @@ GameObject:
   - component: {fileID: 1196963919}
   - component: {fileID: 1196963918}
   - component: {fileID: 1196963917}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (17)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -10325,7 +10382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -10489,7 +10546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -11731,7 +11788,7 @@ Transform:
   m_Children:
   - {fileID: 2022067985}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508200693
 GameObject:
@@ -12003,7 +12060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -12073,7 +12130,7 @@ GameObject:
   - component: {fileID: 1551559626}
   m_Layer: 6
   m_Name: Ceiling (47)
-  m_TagString: DeathTag
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12166,7 +12223,7 @@ GameObject:
   - component: {fileID: 1562800983}
   - component: {fileID: 1562800982}
   - component: {fileID: 1562800981}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (29)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -12520,7 +12577,7 @@ GameObject:
   - component: {fileID: 1602996368}
   - component: {fileID: 1602996367}
   - component: {fileID: 1602996366}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (13)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -13065,7 +13122,7 @@ GameObject:
   - component: {fileID: 1641549930}
   - component: {fileID: 1641549929}
   m_Layer: 6
-  m_Name: Checkpoint7
+  m_Name: Checkpoint1
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13079,8 +13136,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641549927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 1.6916, z: -10.22}
-  m_LocalScale: {x: 4.5698066, y: 6.289832, z: 0.15651642}
+  m_LocalPosition: {x: 0.1, y: 1.5418, z: -10.22}
+  m_LocalScale: {x: 4.5698066, y: 6.589228, z: 0.15651642}
   m_Children: []
   m_Father: {fileID: 2022067985}
   m_RootOrder: 1
@@ -13242,63 +13299,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644999404}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1647939624
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.08438416
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.9964333
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -170.319
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604145, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460328794569604151, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
-      propertyPath: m_Name
-      value: PlayerCharacterLatestPrefab
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5ba2a36abf7a5f14e9ac9fc676d50ba9, type: 3}
 --- !u!1 &1649260034
 GameObject:
   m_ObjectHideFlags: 0
@@ -13311,7 +13311,7 @@ GameObject:
   - component: {fileID: 1649260038}
   - component: {fileID: 1649260037}
   - component: {fileID: 1649260036}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (34)
   m_TagString: DeathTag
   m_Icon: {fileID: 0}
@@ -13501,7 +13501,7 @@ GameObject:
   - component: {fileID: 1676383872}
   - component: {fileID: 1676383871}
   - component: {fileID: 1676383870}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (3)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -13582,7 +13582,7 @@ Transform:
   m_LocalScale: {x: -28.88488, y: 1.4888899, z: 26.067308}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -68.113, y: 0, z: 0}
 --- !u!1 &1686907981
 GameObject:
@@ -14525,9 +14525,9 @@ GameObject:
   - component: {fileID: 1815758834}
   - component: {fileID: 1815758833}
   - component: {fileID: 1815758832}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (8)
-  m_TagString: Untagged
+  m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14554,7 +14554,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815758830}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -14578,7 +14578,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73efc87fc087e844b82e964d9d9ce4ea, type: 2}
+  - {fileID: 2100000, guid: 196a83e4fac7a644ebc189706f6c2082, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15069,7 +15069,7 @@ GameObject:
   - component: {fileID: 1870658139}
   - component: {fileID: 1870658138}
   - component: {fileID: 1870658137}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ceiling (4)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -15150,7 +15150,7 @@ Transform:
   m_LocalScale: {x: -57.393734, y: 1.4888899, z: 128.42046}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 94.069, y: 46.876007, z: 46.886}
 --- !u!1001 &1873129600
 PrefabInstance:
@@ -15522,7 +15522,7 @@ GameObject:
   - component: {fileID: 1927207818}
   - component: {fileID: 1927207817}
   - component: {fileID: 1927207816}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall2 (24)
   m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
@@ -15782,7 +15782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 421958, guid: 86672f35e84daff4699b96a3c82ee675, type: 3}
       propertyPath: m_LocalScale.x
@@ -16277,7 +16277,7 @@ GameObject:
   - component: {fileID: 2035302827}
   m_Layer: 6
   m_Name: Ceiling (46)
-  m_TagString: DeathTag
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
