@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 394496614511072008}
-  signUI: {fileID: 0}
+  signUI: {fileID: 4410765855266794778}
 --- !u!114 &394496615500713239
 MonoBehaviour:
   m_ObjectHideFlags: 0
