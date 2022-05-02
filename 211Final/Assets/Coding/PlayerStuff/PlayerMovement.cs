@@ -90,6 +90,10 @@ public class PlayerMovement : MonoBehaviour
         {
             landAudioSource.Play();
             //animator.SetTrigger("landing");
+        }
+
+        if (isGrounded && hasFlipped)
+        {
             hasFlipped = false;
         }
 
