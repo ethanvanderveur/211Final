@@ -97,10 +97,10 @@ public class GameController : MonoBehaviour
                 GravityGunStatus.hasGravitySuit = true;
                 break;
             default:
-                GravityGunStatus.hasVerticalGun = false;
-                GravityGunStatus.hasHorizontalGun = false;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
+                GravityGunStatus.hasVerticalGun = true;
+                GravityGunStatus.hasHorizontalGun = true;
+                GravityGunStatus.hasTimeSlow = true;
+                GravityGunStatus.hasGravitySuit = true;
                 break;
         }
 
