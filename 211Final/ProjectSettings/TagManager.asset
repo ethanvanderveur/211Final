@@ -11,6 +11,7 @@ TagManager:
   - groundCheck
   - CharacterHitBox
   - SignMenu
+  - Crushable
   layers:
   - Default
   - TransparentFX
