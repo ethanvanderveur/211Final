@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
         // Logic for adding and removing items
         switch (currentCheckpoint.name)
         {
-            case "Checkpoint3":
+            case "Checkpoint1":
                 GravityGunStatus.hasVerticalGun = true;
                 GravityGunStatus.hasHorizontalGun = true;
                 GravityGunStatus.hasTimeSlow = true;
