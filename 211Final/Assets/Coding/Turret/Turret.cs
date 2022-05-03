@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     GameObject turret;
     [SerializeField]
     GameObject turretLaser;
+    GameObject player;
     int deathCounter;
     GameController controllerScript;
     Flippable flipScript;
@@ -22,7 +23,7 @@ public class Turret : MonoBehaviour
         GameObject turretLaser = turret.transform.GetChild(4).gameObject;
         turretLaser.SetActive(false);
 
-
+        player = GameObject.FindGameObjectWithTag("PlayerCharacter");
         controllerScript = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<GameController>();
     }
 
@@ -36,7 +37,7 @@ public class Turret : MonoBehaviour
         var ray = new Ray(this.transform.position, rayDirection);
         RaycastHit hit;
         Debug.DrawRay(transform.position, rayDirection, Color.red);
-        if (Physics.Raycast(ray, out hit, 40, layer))
+        if (Physics.Raycast(ray, out hit, Vector3.Distance(player.transform.position, this.transform.position), layer))
         {
             lineOfSight = false;
         }
