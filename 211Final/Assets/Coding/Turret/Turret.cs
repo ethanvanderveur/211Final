@@ -13,7 +13,7 @@ public class Turret : MonoBehaviour
     int deathCounter;
     GameController controllerScript;
     Flippable flipScript;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
         GameObject turretLaser = turret.transform.GetChild(4).gameObject;
         turretLaser.SetActive(false);
 
-        
+
         controllerScript = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<GameController>();
     }
 
@@ -36,44 +36,34 @@ public class Turret : MonoBehaviour
         var ray = new Ray(this.transform.position, rayDirection);
         RaycastHit hit;
         Debug.DrawRay(transform.position, rayDirection, Color.red);
-        if (Physics.Raycast(ray, out hit, 40, layer)) {
+        if (Physics.Raycast(ray, out hit, 40, layer))
+        {
             lineOfSight = false;
         }
-        else {
+        else
+        {
             lineOfSight = true;
         }
 
 
 
-        if (lineOfSight) {
+        if (lineOfSight)
+        {
             this.transform.LookAt(target.transform);
             turretLaser.SetActive(true);
             deathCounter += 1;
-            if (deathCounter >= 300) {
+            if (deathCounter >= 300)
+            {
                 deathCounter = 0;
                 controllerScript.playerDeath();
             }
         }
-        else {
+        else
+        {
             turretLaser.SetActive(false);
             deathCounter = 0;
         }
 
     }
-    
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log("test");
-        if (collision.gameObject.GetComponent<Flippable>() != null) {
-                Debug.Log("Bang");
-                Destroy(this.gameObject);
-        }
-        
-        /* flipScript = collision.gameObject.GetComponent<Flippable>();
-        if(flipScript){
-            Debug.Log("Bang");
-            Destroy(this.gameObject);
-        }*/
-            
-   }
 }
 

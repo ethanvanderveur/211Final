@@ -28,7 +28,7 @@ public class Flippable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         gravityGunStatus = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<GravityGunStatus>();
@@ -159,14 +159,15 @@ public class Flippable : MonoBehaviour
             gravityGunStatus.slowedAnObject = true;
             slowed = true;
             slowTimer = TIME_SLOW_DURATION_SECONDS;
-            
+
         }
 
         // Time slow timer
         if (slowTimer > 0)
         {
             slowTimer -= Time.deltaTime;
-        } else if (slowed)
+        }
+        else if (slowed)
         {
             if (gravityGunStatus.gravityAxis == tempAxisStorage)
             {
@@ -263,7 +264,7 @@ public class Flippable : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if(other.tag == "groundCheck" && !Input.GetButtonDown("Jump"))
+        if (other.tag == "groundCheck" && !Input.GetButtonDown("Jump"))
         {
             Debug.Log("check hit");
             other.gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().velocity.y = rb.velocity.y;
@@ -272,16 +273,20 @@ public class Flippable : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Checkpoint")
+        if (other.tag == "Checkpoint")
         {
-            rb.velocity = new Vector3(-rb.velocity.x,-rb.velocity.y,-rb.velocity.z);
+            rb.velocity = new Vector3(-rb.velocity.x, -rb.velocity.y, -rb.velocity.z);
             gravityMultiplier = Vector3.zero;
+        }
+        else if (other.tag == "Turret")
+        {
+            Destroy(other.gameObject);
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Checkpoint")
+        if (other.tag == "Checkpoint")
         {
             rb.velocity = Vector3.zero;
         }

@@ -12,6 +12,7 @@ TagManager:
   - CharacterHitBox
   - SignMenu
   - Crushable
+  - Turret
   layers:
   - Default
   - TransparentFX
