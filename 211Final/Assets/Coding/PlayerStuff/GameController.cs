@@ -17,6 +17,13 @@ public class GameController : MonoBehaviour
     public AudioSource deathAudio;
     public AudioSource respawnAudio;
 
+    public GameObject yUI;
+    public GameObject xUI;
+    public GameObject zUI;
+    public GameObject timeUI;
+    public GameObject flipUI;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +86,34 @@ public class GameController : MonoBehaviour
             playerDeath();
         }
 
+        if(GravityGunStatus.hasVerticalGun && !yUI.activeSelf){
+            yUI.SetActive(true);
+        } else if(!GravityGunStatus.hasVerticalGun && yUI.activeSelf) {
+            yUI.SetActive(false);
+        }
+
+        if(GravityGunStatus.hasHorizontalGun && !xUI.activeSelf){
+            xUI.SetActive(true);
+        } else if(!GravityGunStatus.hasHorizontalGun && xUI.activeSelf) {
+            xUI.SetActive(false);
+        }
+        if(GravityGunStatus.hasHorizontalGun && !zUI.activeSelf){
+            zUI.SetActive(true);
+        } else if(!GravityGunStatus.hasHorizontalGun && zUI.activeSelf) {
+            zUI.SetActive(false);
+        }
+
+        if(GravityGunStatus.hasTimeSlow && !timeUI.activeSelf){
+            timeUI.SetActive(true);
+        } else if(!GravityGunStatus.hasTimeSlow && timeUI.activeSelf) {
+            timeUI.SetActive(false);
+        }
+
+        if(GravityGunStatus.hasGravitySuit && !flipUI.activeSelf){
+            flipUI.SetActive(true);
+        } else if(!GravityGunStatus.hasGravitySuit && flipUI.activeSelf) {
+            flipUI.SetActive(false);
+        }
     }
 
 
@@ -91,6 +126,12 @@ public class GameController : MonoBehaviour
         switch (currentCheckpoint.name)
         {
             case "Checkpoint1":
+                GravityGunStatus.hasVerticalGun = true;
+                GravityGunStatus.hasHorizontalGun = true;
+                GravityGunStatus.hasTimeSlow = true;
+                GravityGunStatus.hasGravitySuit = true;
+                break;
+            case "Checkpoint2":
                 GravityGunStatus.hasVerticalGun = true;
                 GravityGunStatus.hasHorizontalGun = true;
                 GravityGunStatus.hasTimeSlow = true;

@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCheckTimer = 0;
     public float jumpCheckMax = 1;
 
+    public GameObject flipOverlay;
+
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
         gravityGunStatus = playerCharacter.GetComponent<GravityGunStatus>();
         cam = GameObject.Find("PlayerCamera");
+        flipOverlay = GameObject.Find("FlipOverlay");
     }
 
     // Update is called once per frame
@@ -74,6 +77,12 @@ public class PlayerMovement : MonoBehaviour
                 gravMode = 0;
                 flipAudioSource.Play();
             }
+        }
+
+        if(hasFlipped){
+            flipOverlay.SetActive(true);
+        } else {
+            flipOverlay.SetActive(false);
         }
 
         if (jumpCheckTimer > 0)

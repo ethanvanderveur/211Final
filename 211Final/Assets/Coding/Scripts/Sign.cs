@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Sign : MonoBehaviour
 {
     public PauseMenu pause;
     public GameObject signUI;
-    public Text uiText;
+    public TextMeshProUGUI uiText;
     public System.String signText = "Placeholder Text";
 
     private void Start(){
         pause = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<PauseMenu>();
-        uiText = GameObject.FindGameObjectWithTag("PlayerCharacter").GetComponent<UnityEngine.UI.Text>();
+        //signUI = GameObject.FindGameObjectWithTag("SignMenu");
+        //uiText = GameObject.FindGameObjectWithTag("SignText").GetComponent<TextMeshProUGUI>();
+        //signUI.SetActive(false);
     }
 
     private void OnMouseEnter()
@@ -31,6 +34,7 @@ public class Sign : MonoBehaviour
         {
             Time.timeScale = 0f;
             PauseMenu.GameIsPaused = true;
+            signUI.SetActive(true);
             uiText.text = signText;
         }
     }
