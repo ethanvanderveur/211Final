@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.00f;
     public LayerMask groundMask;
     public bool isGrounded;
 
@@ -28,11 +28,16 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject playerCharacter;
 
+    public float jumpCheckTimer = 0;
+    public float jumpCheckMax = 1;
+
     public AudioSource jumpAudioSource;
     public AudioSource landAudioSource;
     public AudioSource stepAudioSource;
+    public AudioSource flipAudioSource;
+    public AudioSource checkpointAudioSource;
 
-    public Animator animator; 
+    //public Animator animator;
 
     private void Start()
     {
@@ -56,8 +61,10 @@ public class PlayerMovement : MonoBehaviour
                 //cam.transform.Translate(new Vector3(0, 1.2f, 0));
                 StartCoroutine(FlipCam(cam, true));
                 gravMode = 1;
-                
-            } else
+                flipAudioSource.Play();
+
+            }
+            else
             {
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
                 cam.transform.Rotate(new Vector3(0, 0, 180));
@@ -65,16 +72,31 @@ public class PlayerMovement : MonoBehaviour
                 //cam.transform.Translate(new Vector3(0, -1.2f, 0));
                 StartCoroutine(FlipCam(cam, false));
                 gravMode = 0;
+                flipAudioSource.Play();
             }
+        }
+
+        if (jumpCheckTimer > 0)
+        {
+            jumpCheckTimer -= Time.deltaTime;
+            isGrounded = false;
+        }
+        if (jumpCheckTimer <= 0)
+        {
+            groundCheck.gameObject.SetActive(true);
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         }
 
         if (!isGrounded && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
         {
             landAudioSource.Play();
-            animator.SetTrigger("landing");
+            //animator.SetTrigger("landing");
+        }
+
+        if (isGrounded && hasFlipped)
+        {
             hasFlipped = false;
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (gravMode == 0)
         {
@@ -101,14 +123,16 @@ public class PlayerMovement : MonoBehaviour
             stepAudioSource.Play();
         }
 
-        if((x != 0 || z != 0) && isGrounded){
+        if ((x != 0 || z != 0) && isGrounded)
+        {
             wasMoving = true;
-            animator.SetTrigger("walking");
+            //animator.SetTrigger("walking");
         }
 
-        if (x == 0 && z == 0 && wasMoving){
+        if (x == 0 && z == 0 && wasMoving)
+        {
             wasMoving = false;
-            animator.SetTrigger("stop");
+            //animator.SetTrigger("stop");
         }
 
         if (((x == 0 && z == 0) || !isGrounded || PauseMenu.GameIsPaused) && stepAudioSource.isPlaying)
@@ -127,13 +151,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumpAudioSource.Play();
                 velocity.y = Mathf.Sqrt(jumpHeight * -1 * gravity);
+                groundCheck.gameObject.SetActive(false);
+                jumpCheckTimer = jumpCheckMax;
             }
             else if (gravMode == 1)
             {
                 jumpAudioSource.Play();
-                velocity.y = -Mathf.Sqrt(jumpHeight * gravity);//this one may need some tuning, not sure if -2 or jumpheight need to be negative
+                velocity.y = -Mathf.Sqrt(jumpHeight * gravity);
+                groundCheck.gameObject.SetActive(false);
+                jumpCheckTimer = jumpCheckMax;
             }
-            animator.SetTrigger("jumping");
+            //animator.SetTrigger("jumping");
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -142,11 +170,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Checkpoint")
         {
             gameController.hitCheckPoint(other.gameObject);
+            checkpointAudioSource.Play();
+        }
+        else if (other.tag == "DeathTrigger")
+        {
+            gameController.playerDeath();
         }
         else if (other.tag == "DeathTag")
         {
@@ -160,12 +195,13 @@ public class PlayerMovement : MonoBehaviour
         isRotatingCamera = true;
         for (int i = 0; i < 180; i++)
         {
-            
+
             if (positive)
             {
                 cam.transform.Rotate(0, 0, 1);
                 //cam.transform.Translate(new Vector3(0, -1.2f / 180, 0));
-            } else
+            }
+            else
             {
                 cam.transform.Rotate(0, 0, 1);
                 //cam.transform.Translate(new Vector3(0, 1.2f/180, 0));

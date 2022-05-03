@@ -14,10 +14,16 @@ public class GameController : MonoBehaviour
     [SerializeField]
     static GameObject playerCharacter;
 
+    public AudioSource deathAudio;
+    public AudioSource respawnAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetString("curCheck") == "")
+        {
+            PlayerPrefs.SetString("curCheck", "Checkpoint1");
+        }
         // Load player info back in
         playerCharacter = GameObject.FindGameObjectWithTag("PlayerCharacter");
         currentCheckpoint = GameObject.Find(PlayerPrefs.GetString("curCheck"));
@@ -75,6 +81,7 @@ public class GameController : MonoBehaviour
 
     }
 
+
     public void hitCheckPoint(GameObject ch)
     {
         currentCheckpoint = ch;
@@ -85,35 +92,13 @@ public class GameController : MonoBehaviour
         {
             case "Checkpoint1":
                 GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = false;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
-                break;
-             case "Checkpoint2":
-                GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = true;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
-                break;
-            case "Checkpoint3":
-                GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = true;
-                GravityGunStatus.hasTimeSlow = true;
-                GravityGunStatus.hasGravitySuit = false;
-                break;
-            case "Checkpoint4":
-                GravityGunStatus.hasVerticalGun = true;
                 GravityGunStatus.hasHorizontalGun = true;
                 GravityGunStatus.hasTimeSlow = true;
                 GravityGunStatus.hasGravitySuit = true;
                 break;
             default:
-                GravityGunStatus.hasVerticalGun = false;
-                GravityGunStatus.hasHorizontalGun = false;
-                GravityGunStatus.hasTimeSlow = false;
-                GravityGunStatus.hasGravitySuit = false;
                 break;
-        } 
+        }
 
 
     }
@@ -128,6 +113,7 @@ public class GameController : MonoBehaviour
     {
         //SceneManager.LoadScene("Planet" + planetNumber);
         savePlayerInfo();
+        deathAudio.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
@@ -149,5 +135,6 @@ public class GameController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             playerCharacter.transform.position = currentCheckpoint.transform.position + new Vector3(0, .5f, 0);
         }
+        respawnAudio.Play();
     }
 }

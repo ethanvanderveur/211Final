@@ -7,7 +7,12 @@ TagManager:
   - PlayerCharacter
   - Checkpoint
   - PersonCamera
-  - DeathTag
+  - DeathTrigger
+  - groundCheck
+  - CharacterHitBox
+  - SignMenu
+  - Crushable
+  - Turret
   layers:
   - Default
   - TransparentFX
