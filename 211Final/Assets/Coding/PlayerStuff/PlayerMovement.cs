@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     public Transform groundCheck;
-    public float groundDistance = 0.00f;
+    public float groundDistance = 0.5f;
     public LayerMask groundMask;
     public bool isGrounded;
 
