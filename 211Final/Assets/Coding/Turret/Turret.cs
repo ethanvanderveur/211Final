@@ -14,6 +14,8 @@ public class Turret : MonoBehaviour
     int deathCounter;
     GameController controllerScript;
     Flippable flipScript;
+    
+    public GameObject explosionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,10 @@ public class Turret : MonoBehaviour
             deathCounter = 0;
         }
 
+    }
+
+    void OnDestroy() {
+        //Instantiate(explosionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 }
 

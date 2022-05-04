@@ -25,6 +25,8 @@ public class Flippable : MonoBehaviour
 
     public AudioSource gunAudioSource;
 
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -280,6 +282,8 @@ public class Flippable : MonoBehaviour
         }
         else if (other.tag == "Turret")
         {
+            explosion = other.gameObject.transform.GetChild(0).GetComponent<Turret>().explosionPrefab;
+            Instantiate(explosion, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
     }
