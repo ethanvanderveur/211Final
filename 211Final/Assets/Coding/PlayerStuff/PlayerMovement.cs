@@ -261,6 +261,11 @@ public class PlayerMovement : MonoBehaviour
         {
             gameController.playerDeath();
         }
+        else if (other.tag == "DeathTag")
+        {
+            gameController.playerDeath();
+            Debug.Log("!");
+        }
     }
 
     IEnumerator FlipCam(GameObject cam, bool positive)
