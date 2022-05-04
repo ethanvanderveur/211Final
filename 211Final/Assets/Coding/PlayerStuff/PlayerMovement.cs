@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource flipAudioSource;
     public AudioSource checkpointAudioSource;
     public AudioSource lavaAudioSource;
+    public AudioSource pOneMusic, pTwoMusic, pThreeMusic, pFourMusic, pFiveMusic;
 
     public Rigidbody camBody;
     public Transform camTran;
@@ -199,12 +200,50 @@ public class PlayerMovement : MonoBehaviour
             wasRot = false;
             //camTran.rotation = storedRotation;
         }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet1") && !pOneMusic.isPlaying)
+        {
+            pOneMusic.Play();
+        }
+        else
+        {
+            pOneMusic.Stop();
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet2") && !pTwoMusic.isPlaying)
+        {
+            pTwoMusic.Play();
+        }
+        else
+        {
+            pTwoMusic.Stop();
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet3") && !pThreeMusic.isPlaying)
+        {
+            pThreeMusic.Play();
+        }
+        else
+        {
+            pThreeMusic.Stop();
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet4") && !pFourMusic.isPlaying)
+        {
+            pFourMusic.Play();
+        }
+        else
+        {
+            pFourMusic.Stop();
+        }
+
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5") && !lavaAudioSource.isPlaying)
         {
+            pFiveMusic.Play();
             lavaAudioSource.Play();
         } else
         {
+            pFiveMusic.Play();
             lavaAudioSource.Stop();
         }
     }
