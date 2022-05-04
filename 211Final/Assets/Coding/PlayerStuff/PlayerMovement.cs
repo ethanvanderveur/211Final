@@ -200,11 +200,12 @@ public class PlayerMovement : MonoBehaviour
             wasRot = false;
             //camTran.rotation = storedRotation;
         }
+        
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet1") && !pOneMusic.isPlaying)
         {
             pOneMusic.Play();
         }
-        else
+        else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet1")))
         {
             pOneMusic.Stop();
         }
@@ -213,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
         {
             pTwoMusic.Play();
         }
-        else
+        else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet2")))
         {
             pTwoMusic.Stop();
         }
@@ -222,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
         {
             pThreeMusic.Play();
         }
-        else
+        else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet3")))
         {
             pThreeMusic.Stop();
         }
@@ -231,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
         {
             pFourMusic.Play();
         }
-        else
+        else if(!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet4")))
         {
             pFourMusic.Stop();
         }
@@ -239,12 +240,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5") && !lavaAudioSource.isPlaying)
         {
-            pFiveMusic.Play();
             lavaAudioSource.Play();
-        } else
+        } else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5")))
+        {
+            lavaAudioSource.Stop();
+        }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5") && !pFiveMusic.isPlaying)
         {
             pFiveMusic.Play();
-            lavaAudioSource.Stop();
+        }
+        else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5")))
+        {
+            pFiveMusic.Stop();
         }
     }
 

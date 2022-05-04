@@ -8108,7 +8108,7 @@ Transform:
   - {fileID: 710826857}
   - {fileID: 254759470}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &221473106
 Mesh:
@@ -13966,6 +13966,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+--- !u!114 &353602395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8756681106927270012, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+  m_PrefabInstance: {fileID: 353602394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &353602396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4410765855266794778, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+  m_PrefabInstance: {fileID: 353602394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &353602397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 394496615500713706, guid: aa17c9223b9162e43bbe2eba127af49c, type: 3}
+  m_PrefabInstance: {fileID: 353602394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48247b00ec584ca4f902090b11e54d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355439270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3234580555445144438, guid: aab120f1b340c614a93ca1ecc1eea6a6, type: 3}
@@ -45005,7 +45032,7 @@ Transform:
   - {fileID: 1367926003}
   - {fileID: 699570404}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1148630943
 Mesh:
@@ -58110,6 +58137,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462960694}
   m_Mesh: {fileID: 2033631025}
+--- !u!1001 &1463191148
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 285051236003025452, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 353602397}
+    - target: {fileID: 285051236003025452, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: signUI
+      value: 
+      objectReference: {fileID: 353602396}
+    - target: {fileID: 285051236003025452, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: uiText
+      value: 
+      objectReference: {fileID: 353602395}
+    - target: {fileID: 285051236003025452, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: signText
+      value: You've collected an upgrade chip for the gravity gun! You can now press
+        1, 2, and 3 to flip between the y, x, and z axis. Now, whenever you click
+        on a flippable object, it will set gravity to positive for left click or
+        negative for right click in that direction.
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.6485443
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.364302
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025457, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 285051236003025458, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
+      propertyPath: m_Name
+      value: sign
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c859d79fb99286241b75fe04eb249cad, type: 3}
 --- !u!1 &1465497138
 GameObject:
   m_ObjectHideFlags: 0
@@ -73738,7 +73841,7 @@ Transform:
   - {fileID: 1553991379}
   - {fileID: 1206229746}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860824375
 GameObject:
@@ -74244,7 +74347,7 @@ Transform:
   - {fileID: 1736935596}
   - {fileID: 2113696231}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1875930394
 GameObject:
@@ -78854,7 +78957,7 @@ Transform:
   - {fileID: 1968417340}
   - {fileID: 1989159154}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2012854713 stripped
 Transform:
