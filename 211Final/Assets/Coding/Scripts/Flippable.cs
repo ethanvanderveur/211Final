@@ -24,6 +24,7 @@ public class Flippable : MonoBehaviour
     public float slowTimer;
 
     public AudioSource gunAudioSource;
+    public AudioSource expAudioSource;
 
     public GameObject explosion;
 
@@ -282,9 +283,11 @@ public class Flippable : MonoBehaviour
         }
         else if (other.tag == "Turret")
         {
-            explosion = other.gameObject.transform.GetChild(0).GetComponent<Turret>().explosionPrefab;
+            explosion = other.transform.parent.gameObject.transform.GetChild(0).GetComponent<Turret>().explosionPrefab;
+            expAudioSource = other.transform.parent.gameObject.transform.GetChild(1).transform.GetChild(2).GetComponent<AudioSource>();
+            expAudioSource.Play();
             Instantiate(explosion, other.transform.position, Quaternion.identity);
-            Destroy(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
         }
     }
 

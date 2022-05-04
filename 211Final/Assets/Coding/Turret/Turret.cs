@@ -16,6 +16,11 @@ public class Turret : MonoBehaviour
     Flippable flipScript;
     
     public GameObject explosionPrefab;
+    public GameObject colliderBox;
+
+    public AudioSource shoot;
+    public AudioSource charge;
+    public AudioSource explosionAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -52,18 +57,25 @@ public class Turret : MonoBehaviour
 
         if (lineOfSight)
         {
+            if (!charge.isPlaying)
+            {
+                charge.Play();
+            }
             this.transform.LookAt(target.transform);
+            colliderBox.transform.LookAt(target.transform);
             turretLaser.SetActive(true);
             deathCounter += 1;
             if (deathCounter >= 300)
             {
                 deathCounter = 0;
+                shoot.Play();
                 controllerScript.playerDeath();
             }
         }
         else
         {
             turretLaser.SetActive(false);
+            charge.Stop();
             deathCounter = 0;
         }
 

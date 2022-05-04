@@ -203,6 +203,9 @@ public class PlayerMovement : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5") && !lavaAudioSource.isPlaying)
         {
             lavaAudioSource.Play();
+        } else
+        {
+            lavaAudioSource.Stop();
         }
     }
 
@@ -243,11 +246,11 @@ public class PlayerMovement : MonoBehaviour
             //camTran.rotation = storedRotation;
             yield return new WaitForSeconds(.002f);
             
-            Debug.Log("rotation: " + camTran.rotation);
+            //Debug.Log("rotation: " + camTran.rotation);
         }
         
         isRotatingCamera = false;
-        Debug.Log(camTran.rotation);
+       // Debug.Log(camTran.rotation);
         yield return null;
         //camTran.rotation = Quaternion.Euler(-camTran.rotation.x, 0, 0);
         //camTran.rotation = storedRotation;
