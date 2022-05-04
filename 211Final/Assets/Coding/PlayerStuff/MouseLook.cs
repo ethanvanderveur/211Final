@@ -12,7 +12,6 @@ public class MouseLook : MonoBehaviour
 
     private float yRotation = 0f;
 
-    private float mouseYOff = 0f;
 
     // Start is called before the first frame update
     void Start()

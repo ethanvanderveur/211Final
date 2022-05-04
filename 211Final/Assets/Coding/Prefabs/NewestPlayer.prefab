@@ -171,8 +171,10 @@ MonoBehaviour:
   stepAudioSource: {fileID: 9063476256468131393}
   flipAudioSource: {fileID: 8519269404427663582}
   checkpointAudioSource: {fileID: 8973055690249993962}
+  lavaAudioSource: {fileID: 2675509280508653138}
   camBody: {fileID: 1055464431100342397}
   camTran: {fileID: 394496614289301323}
+  wasRot: 0
 --- !u!114 &394496614182216763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1516,7 +1518,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1814180e30def7b449575d56b2809911, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2031,7 +2033,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9fcb6dc763cd0354da305b5de2091287, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d937ddc8d34c88f4b95260571c9dd54f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2361,7 +2363,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b16dc74b7376aca46bd0c6be96c940fa, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1b38e6d6d0ac9854aa47343e7a15864c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2564,7 +2566,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7f4aa26d5b55226409cda231ffaf869b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d9b3332f09f3f9d4c923fe965971d365, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

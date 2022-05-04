@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource stepAudioSource;
     public AudioSource flipAudioSource;
     public AudioSource checkpointAudioSource;
+    public AudioSource lavaAudioSource;
 
     public Rigidbody camBody;
     public Transform camTran;
@@ -197,6 +198,11 @@ public class PlayerMovement : MonoBehaviour
         {
             wasRot = false;
             //camTran.rotation = storedRotation;
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5") && !lavaAudioSource.isPlaying)
+        {
+            lavaAudioSource.Play();
         }
     }
 
