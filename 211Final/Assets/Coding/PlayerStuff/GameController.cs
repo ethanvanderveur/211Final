@@ -86,32 +86,47 @@ public class GameController : MonoBehaviour
             playerDeath();
         }
 
-        if(GravityGunStatus.hasVerticalGun && !yUI.activeSelf){
+        if (GravityGunStatus.hasVerticalGun && !yUI.activeSelf)
+        {
             yUI.SetActive(true);
-        } else if(!GravityGunStatus.hasVerticalGun && yUI.activeSelf) {
+        }
+        else if (!GravityGunStatus.hasVerticalGun && yUI.activeSelf)
+        {
             yUI.SetActive(false);
         }
 
-        if(GravityGunStatus.hasHorizontalGun && !xUI.activeSelf){
+        if (GravityGunStatus.hasHorizontalGun && !xUI.activeSelf)
+        {
             xUI.SetActive(true);
-        } else if(!GravityGunStatus.hasHorizontalGun && xUI.activeSelf) {
+        }
+        else if (!GravityGunStatus.hasHorizontalGun && xUI.activeSelf)
+        {
             xUI.SetActive(false);
         }
-        if(GravityGunStatus.hasHorizontalGun && !zUI.activeSelf){
+        if (GravityGunStatus.hasHorizontalGun && !zUI.activeSelf)
+        {
             zUI.SetActive(true);
-        } else if(!GravityGunStatus.hasHorizontalGun && zUI.activeSelf) {
+        }
+        else if (!GravityGunStatus.hasHorizontalGun && zUI.activeSelf)
+        {
             zUI.SetActive(false);
         }
 
-        if(GravityGunStatus.hasTimeSlow && !timeUI.activeSelf){
+        if (GravityGunStatus.hasTimeSlow && !timeUI.activeSelf)
+        {
             timeUI.SetActive(true);
-        } else if(!GravityGunStatus.hasTimeSlow && timeUI.activeSelf) {
+        }
+        else if (!GravityGunStatus.hasTimeSlow && timeUI.activeSelf)
+        {
             timeUI.SetActive(false);
         }
 
-        if(GravityGunStatus.hasGravitySuit && !flipUI.activeSelf){
+        if (GravityGunStatus.hasGravitySuit && !flipUI.activeSelf)
+        {
             flipUI.SetActive(true);
-        } else if(!GravityGunStatus.hasGravitySuit && flipUI.activeSelf) {
+        }
+        else if (!GravityGunStatus.hasGravitySuit && flipUI.activeSelf)
+        {
             flipUI.SetActive(false);
         }
     }
@@ -122,22 +137,131 @@ public class GameController : MonoBehaviour
         currentCheckpoint = ch;
         Debug.Log("Hit " + currentCheckpoint.name);
 
-        // Logic for adding and removing items
-        switch (currentCheckpoint.name)
+        Debug.Log("Current Planet: " + planetNumber);
+
+        if (currentCheckpoint.name == "ResetEverything")
         {
-            case "Checkpoint1":
-                GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = true;
-                GravityGunStatus.hasTimeSlow = true;
-                GravityGunStatus.hasGravitySuit = true;
+            GravityGunStatus.hasVerticalGun = false;
+            GravityGunStatus.hasHorizontalGun = false;
+            GravityGunStatus.hasTimeSlow = false;
+            GravityGunStatus.hasGravitySuit = false;
+            planetNumber = 1;
+            currentCheckpoint.name = "Checkpoint1";
+            savePlayerInfo();
+            Debug.Log("RESETING");
+        }
+        // Logic for adding and removing items
+        switch (planetNumber)
+        {
+            case 1:
+                Debug.Log("Planet1!");
+                switch (currentCheckpoint.name)
+                {
+                    case "Checkpoint1":
+                        GravityGunStatus.hasVerticalGun = false;
+                        GravityGunStatus.hasHorizontalGun = false;
+                        GravityGunStatus.hasTimeSlow = false;
+                        GravityGunStatus.hasGravitySuit = false;
+                        break;
+                    case "Planet1Portal":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = false;
+                        GravityGunStatus.hasTimeSlow = false;
+                        GravityGunStatus.hasGravitySuit = false;
+                        currentCheckpoint.name = "Checkpoint1";
+                        nextPlanet();
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case "Checkpoint2":
-                GravityGunStatus.hasVerticalGun = true;
-                GravityGunStatus.hasHorizontalGun = true;
-                GravityGunStatus.hasTimeSlow = true;
-                GravityGunStatus.hasGravitySuit = true;
+            case 2:
+                Debug.Log("Planet2!");
+                switch (currentCheckpoint.name)
+                {
+                    case "Checkpoint1":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = false;
+                        GravityGunStatus.hasTimeSlow = false;
+                        GravityGunStatus.hasGravitySuit = false;
+                        break;
+                    case "Planet2Portal":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = false;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = false;
+                        currentCheckpoint.name = "Checkpoint1";
+                        nextPlanet();
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            default:
+            case 3:
+                Debug.Log("Planet3!");
+                switch (currentCheckpoint.name)
+                {
+                    case "Checkpoint1":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = false;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = false;
+                        break;
+                    case "Planet3Portal":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = true;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = false;
+                        currentCheckpoint.name = "Checkpoint1";
+                        nextPlanet();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 4:
+                Debug.Log("Planet4!");
+                switch (currentCheckpoint.name)
+                {
+                    case "Checkpoint1":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = true;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = false;
+                        break;
+                    case "Planet4Portal":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = true;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = true;
+                        currentCheckpoint.name = "Checkpoint1";
+                        nextPlanet();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 5:
+                Debug.Log("Planet5!");
+                switch (currentCheckpoint.name)
+                {
+                    case "Checkpoint1":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = true;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = true;
+                        break;
+                    case "Planet5Portal":
+                        GravityGunStatus.hasVerticalGun = true;
+                        GravityGunStatus.hasHorizontalGun = true;
+                        GravityGunStatus.hasTimeSlow = true;
+                        GravityGunStatus.hasGravitySuit = true;
+                        currentCheckpoint.name = "Checkpoint1";
+                        nextPlanet();
+                        break;
+                    default:
+                        break;
+                }
                 break;
         }
 
@@ -146,8 +270,9 @@ public class GameController : MonoBehaviour
 
     public void nextPlanet()
     {
+        planetNumber++;
         savePlayerInfo();
-        SceneManager.LoadScene("Planet" + planetNumber);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void playerDeath()

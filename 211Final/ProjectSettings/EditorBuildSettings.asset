@@ -9,6 +9,24 @@ EditorBuildSettings:
     path: Assets/Coding/Scenes/StartMenu.unity
     guid: 5bf1090e4900c264c96b56f14bf9ee7f
   - enabled: 1
-    path: Assets/Coding/Scenes/CodingScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Coding/Scenes/Instructions.unity
+    guid: 3644b7e9feef7f34c89581b017b086b1
+  - enabled: 1
+    path: Assets/Level Design Planet 1/Scenes/Planet1.unity
+    guid: 7111e4af229f8db4e934dc39aa59d025
+  - enabled: 1
+    path: Assets/Level Design Planet 2/Scenes/Planet2.unity
+    guid: 9f19b1452e076fb4cbc02d7e3966e7ed
+  - enabled: 1
+    path: Assets/Level Design Planet 3/Planet3.unity
+    guid: c39152a45bbaea34aa0b67bb2fdb0432
+  - enabled: 1
+    path: Assets/Level Design Planet 4/Planet4.unity
+    guid: 8cd7cc44e7c8ef040be4c56c7b45dd18
+  - enabled: 1
+    path: Assets/LevelDesign Planet 5/Scenes/Planet5.unity
+    guid: c61528fb378d25f44a119079c473aa8b
+  - enabled: 1
+    path: Assets/Coding/Scenes/WinScreen.unity
+    guid: 2fb5ad707f694774c8b02013deec23d3
   m_configObjects: {}
