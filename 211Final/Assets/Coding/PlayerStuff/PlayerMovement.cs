@@ -61,14 +61,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         //Debug.Log(camTran.rotation);
         if (Input.GetKeyDown(KeyCode.Q) && GravityGunStatus.hasGravitySuit && !hasFlipped)
         {
             hasFlipped = true;
             if (gravMode == 0)
             {
-                
+
                 //Debug.Log(camTran.rotation);
                 storedRotation = camTran.rotation;
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                
+
                 //Debug.Log(camTran.rotation);
                 storedRotation = camTran.rotation;
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
@@ -98,9 +98,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(hasFlipped){
+        if (hasFlipped)
+        {
             flipOverlay.SetActive(true);
-        } else {
+        }
+        else
+        {
             flipOverlay.SetActive(false);
         }
 
@@ -195,12 +198,12 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        if(wasRot && !isRotatingCamera)
+        if (wasRot && !isRotatingCamera)
         {
             wasRot = false;
             //camTran.rotation = storedRotation;
         }
-        
+
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet1") && !pOneMusic.isPlaying)
         {
             pOneMusic.Play();
@@ -232,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
         {
             pFourMusic.Play();
         }
-        else if(!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet4")))
+        else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet4")))
         {
             pFourMusic.Stop();
         }
@@ -241,7 +244,8 @@ public class PlayerMovement : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5") && !lavaAudioSource.isPlaying)
         {
             lavaAudioSource.Play();
-        } else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5")))
+        }
+        else if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Planet5")))
         {
             lavaAudioSource.Stop();
         }
@@ -277,31 +281,31 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator FlipCam(GameObject cam, bool positive)
     {
-        
+
         isRotatingCamera = true;
         wasRot = true;
-        for (int i = 0; i < 180; i++)
+        for (int i = 0; i < 60; i++)
         {
 
             if (positive)
             {
-                cam.transform.Rotate(0, 0, 1);
+                cam.transform.Rotate(0, 0, 3);
                 //cam.transform.Translate(new Vector3(0, -1.2f / 180, 0));
             }
             else
             {
-                cam.transform.Rotate(0, 0, 1);
+                cam.transform.Rotate(0, 0, 3);
                 //cam.transform.Translate(new Vector3(0, 1.2f/180, 0));
             }
-            
+
             //camTran.rotation = storedRotation;
             yield return new WaitForSeconds(.002f);
-            
+
             //Debug.Log("rotation: " + camTran.rotation);
         }
-        
+
         isRotatingCamera = false;
-       // Debug.Log(camTran.rotation);
+        // Debug.Log(camTran.rotation);
         yield return null;
         //camTran.rotation = Quaternion.Euler(-camTran.rotation.x, 0, 0);
         //camTran.rotation = storedRotation;
