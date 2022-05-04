@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour
             planetNumber = 1;
             currentCheckpoint.name = "Checkpoint1";
             savePlayerInfo();
-            Debug.Log("RESETING");
+            Debug.Log("RESETING PLAYERPREFS");
         }
         // Logic for adding and removing items
         switch (planetNumber)
@@ -168,7 +168,7 @@ public class GameController : MonoBehaviour
                         GravityGunStatus.hasHorizontalGun = false;
                         GravityGunStatus.hasTimeSlow = false;
                         GravityGunStatus.hasGravitySuit = false;
-                        currentCheckpoint.name = "Checkpoint1";
+
                         nextPlanet();
                         break;
                     default:
@@ -190,7 +190,6 @@ public class GameController : MonoBehaviour
                         GravityGunStatus.hasHorizontalGun = false;
                         GravityGunStatus.hasTimeSlow = true;
                         GravityGunStatus.hasGravitySuit = false;
-                        currentCheckpoint.name = "Checkpoint1";
                         nextPlanet();
                         break;
                     default:
@@ -212,7 +211,6 @@ public class GameController : MonoBehaviour
                         GravityGunStatus.hasHorizontalGun = true;
                         GravityGunStatus.hasTimeSlow = true;
                         GravityGunStatus.hasGravitySuit = false;
-                        currentCheckpoint.name = "Checkpoint1";
                         nextPlanet();
                         break;
                     default:
@@ -234,7 +232,6 @@ public class GameController : MonoBehaviour
                         GravityGunStatus.hasHorizontalGun = true;
                         GravityGunStatus.hasTimeSlow = true;
                         GravityGunStatus.hasGravitySuit = true;
-                        currentCheckpoint.name = "Checkpoint1";
                         nextPlanet();
                         break;
                     default:
@@ -256,7 +253,7 @@ public class GameController : MonoBehaviour
                         GravityGunStatus.hasHorizontalGun = true;
                         GravityGunStatus.hasTimeSlow = true;
                         GravityGunStatus.hasGravitySuit = true;
-                        currentCheckpoint.name = "Checkpoint1";
+                        Cursor.lockState = CursorLockMode.None;
                         nextPlanet();
                         break;
                     default:
@@ -270,6 +267,7 @@ public class GameController : MonoBehaviour
 
     public void nextPlanet()
     {
+        currentCheckpoint.name = "Checkpoint1";
         planetNumber++;
         savePlayerInfo();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -277,7 +275,6 @@ public class GameController : MonoBehaviour
 
     public void playerDeath()
     {
-        //SceneManager.LoadScene("Planet" + planetNumber);
         savePlayerInfo();
         deathAudio.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
