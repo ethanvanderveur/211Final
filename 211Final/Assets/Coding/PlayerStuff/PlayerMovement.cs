@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource flipAudioSource;
     public AudioSource checkpointAudioSource;
 
+    public Rigidbody camBody;
+    public Transform camTran;
+    private Quaternion storedRotation;
+    public bool wasRot = false;
+
     //public Animator animator;
 
     private void Start()
@@ -48,34 +53,46 @@ public class PlayerMovement : MonoBehaviour
         gravityGunStatus = playerCharacter.GetComponent<GravityGunStatus>();
         cam = GameObject.Find("PlayerCamera");
         flipOverlay = GameObject.Find("FlipOverlay");
+        //GetComponent<Rigidbody>().velocity.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        //Debug.Log(camTran.rotation);
         if (Input.GetKeyDown(KeyCode.Q) && GravityGunStatus.hasGravitySuit && !hasFlipped)
         {
             hasFlipped = true;
             if (gravMode == 0)
             {
+                
+                //Debug.Log(camTran.rotation);
+                storedRotation = camTran.rotation;
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
                 cam.transform.Rotate(new Vector3(0, 0, 180));
                 velocity.y = 3f;
                 //cam.transform.Translate(new Vector3(0, 1.2f, 0));
                 StartCoroutine(FlipCam(cam, true));
                 gravMode = 1;
+                camTran.rotation = storedRotation;
                 flipAudioSource.Play();
-
+                //camTran.rotation = Quaternion.Euler(90, 0, 0);
             }
             else
             {
+                
+                //Debug.Log(camTran.rotation);
+                storedRotation = camTran.rotation;
                 playerCharacter.transform.Rotate(new Vector3(0, 0, 180));
                 cam.transform.Rotate(new Vector3(0, 0, 180));
                 velocity.y = -3f;
                 //cam.transform.Translate(new Vector3(0, -1.2f, 0));
                 StartCoroutine(FlipCam(cam, false));
                 gravMode = 0;
+                camTran.rotation = storedRotation;
                 flipAudioSource.Play();
+                //camTran.rotation = Quaternion.Euler(-90, 0, 0);
             }
         }
 
@@ -176,7 +193,11 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-
+        if(wasRot && !isRotatingCamera)
+        {
+            wasRot = false;
+            //camTran.rotation = storedRotation;
+        }
     }
 
 
@@ -196,7 +217,9 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator FlipCam(GameObject cam, bool positive)
     {
+        
         isRotatingCamera = true;
+        wasRot = true;
         for (int i = 0; i < 180; i++)
         {
 
@@ -210,9 +233,17 @@ public class PlayerMovement : MonoBehaviour
                 cam.transform.Rotate(0, 0, 1);
                 //cam.transform.Translate(new Vector3(0, 1.2f/180, 0));
             }
+            
+            //camTran.rotation = storedRotation;
             yield return new WaitForSeconds(.002f);
+            
+            Debug.Log("rotation: " + camTran.rotation);
         }
+        
         isRotatingCamera = false;
+        Debug.Log(camTran.rotation);
         yield return null;
+        //camTran.rotation = Quaternion.Euler(-camTran.rotation.x, 0, 0);
+        //camTran.rotation = storedRotation;
     }
 }
